@@ -1,4 +1,3 @@
-using Arium;
 using AUT.Facade;
 using AUT.Facade.POMs;
 using FluentAssertions;
@@ -12,7 +11,7 @@ using System.Threading;
 using TimeoutEx;
 using Xunit;
 
-namespace NavBrowser.Tests
+namespace Arium.UITests
 {
     public class UnitTest1 : IDisposable
     {
