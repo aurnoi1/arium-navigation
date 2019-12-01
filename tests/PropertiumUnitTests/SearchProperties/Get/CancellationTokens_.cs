@@ -109,7 +109,7 @@ namespace Propertium.UnitTests.SearchProperties.Get
                 )
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
+                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
                 using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
                 using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
                 var cancellationToken1 = cancellationTokenSource1.Token;
@@ -139,7 +139,7 @@ namespace Propertium.UnitTests.SearchProperties.Get
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
+                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
                 using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
                 using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
                 var cancellationToken1 = cancellationTokenSource1.Token;
@@ -164,7 +164,7 @@ namespace Propertium.UnitTests.SearchProperties.Get
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
+                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
                 using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
                 using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
                 var cancellationToken1 = cancellationTokenSource1.Token;

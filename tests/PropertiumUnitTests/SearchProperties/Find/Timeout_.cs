@@ -34,7 +34,7 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
-                var timeout = 50.Milliseconds();
+                var timeout = 100.Milliseconds();
 
                 // Act
                 var actual = sut.Find(timeout);
@@ -51,7 +51,7 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 string value)
             {
                 // Arrange
-                var timeout = 50.Milliseconds();
+                var timeout = 100.Milliseconds();
                 using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 int indexOutOfRange = webElements.Count + 1;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
@@ -72,7 +72,7 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationTokenSource.Token);
-                var timeout = 50.Milliseconds();
+                var timeout = 100.Milliseconds();
 
                 // Act
                 var actual = sut.Find(timeout);
@@ -102,7 +102,7 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
-                var timeout = 50.Milliseconds();
+                var timeout = 100.Milliseconds();
 
                 // Act
                 var actual = sut.Find(timeout);
@@ -119,9 +119,9 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
+                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
-                var timeout = 50.Milliseconds();
+                var timeout = 100.Milliseconds();
                 int indexOutOfRange = webElements.Count + 1;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
@@ -138,11 +138,11 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
+                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationToken);
-                var timeout = 50.Milliseconds();
+                var timeout = 100.Milliseconds();
 
                 // Act
                 var actual = sut.Find(timeout);

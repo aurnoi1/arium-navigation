@@ -104,7 +104,7 @@ namespace Propertium.UnitTests.WebElementEx.Wait
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
+                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var cancellationToken = cancellationTokenSource.Token;
