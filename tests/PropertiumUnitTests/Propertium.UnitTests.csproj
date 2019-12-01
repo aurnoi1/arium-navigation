@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.9.0" />
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
+    <PackageReference Include="AutoFixture.Idioms" Version="4.11.0" />
+    <PackageReference Include="AutoFixture.Xunit2" Version="4.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
@@ -23,9 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Propertium\Propertium.csproj" />
     <ProjectReference Include="..\..\src\TimeoutEx\TimeoutEx.csproj" />
-    <ProjectReference Include="..\..\src\Arium\Arium.csproj" />
-    <ProjectReference Include="..\AUTFacade\AUT.Facade.csproj" />
-    <ProjectReference Include="..\AUT\AUT.csproj" />
   </ItemGroup>
 
 </Project>

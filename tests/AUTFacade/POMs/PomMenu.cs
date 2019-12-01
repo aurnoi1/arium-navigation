@@ -1,7 +1,7 @@
 ﻿using Arium;
 using Arium.Enums;
-using Paramium;
-using Paramium.WindowsDriver;
+using Propertium;
+using Propertium.WindowsDriver;
 using Arium.Interfaces;
 using AUT.Facade.Interfaces;
 using OpenQA.Selenium;

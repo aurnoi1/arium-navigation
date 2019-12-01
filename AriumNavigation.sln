@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arium", "src\Arium\Arium.csproj", "{31733CEB-9CE3-49A5-AEAA-B9E7157CF49F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paramium", "src\Paramium\Paramium.csproj", "{2FF10B9F-9E45-47CD-844D-715AC78103E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Propertium", "src\Propertium\Propertium.csproj", "{2FF10B9F-9E45-47CD-844D-715AC78103E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E8AB87A3-40AE-4BC3-9D5B-D91A1EF20528}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeoutEx", "src\TimeoutEx\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeoutEx.UnitTests", "tests\TimeoutEx.UnitTests\TimeoutEx.UnitTests.csproj", "{AA2B0E68-1C1D-4357-921D-A1DD18E3B258}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paramium.UnitTests", "tests\ParamiumUnitTests\Paramium.UnitTests.csproj", "{C8783CD8-E17F-461C-A4E5-BD9E68D57A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Propertium.UnitTests", "tests\PropertiumUnitTests\Propertium.UnitTests.csproj", "{C8783CD8-E17F-461C-A4E5-BD9E68D57A05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arium.UITests", "tests\AriumUITests\Arium.UITests.csproj", "{57DB52F6-75D7-41CB-B622-910E5CA215A3}"
 EndProject
