@@ -2,7 +2,6 @@
 using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
-using Propertium.Exceptions;
 using Propertium.UnitTests.DataAttributes;
 using Shouldly;
 using System;
@@ -16,32 +15,6 @@ namespace Propertium.UnitTests.SearchProperties.Find
 {
     public class Default_
     {
-        public class Given_no_defaultCancellationToken_is_initialized_
-        {
-            [Theory]
-            [InlineAutoMoqData(0)]
-            public void When_try_to_find_Then_throws_UninitializedDefaultCancellationTokenException(
-                int index,
-                IFindsByFluentSelector<IWebElement> webDriver,
-                [Frozen]IReadOnlyCollection<IWebElement> webElements,
-                string locator,
-                string value
-                )
-            {
-                // Arrange
-                var expected = webElements.ElementAt(index);
-                Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(
-                    locator,
-                    value,
-                    webDriver,
-                    index);
-
-                // Act, Assert
-                Assert.Throws<UninitializedDefaultCancellationTokenException>(() => sut.Find());
-            }
-        }
-
         public class Given_an_expired_defaultCancellationToken_3_webElements_with_same_locator_properties_
         {
             [Theory]

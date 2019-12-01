@@ -26,7 +26,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility, 
             "TitleYellow", 
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
@@ -34,7 +35,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility, 
             "BtnBack", 
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
@@ -42,7 +44,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UIBtnOpenMenuPage => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "BtnOpenMenuView",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         #endregion Controls
 

@@ -20,10 +20,6 @@
         <PackageReference Include="Appium.WebDriver" Version="4.1.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Arium\Arium.csproj" />
-    </ItemGroup>
-
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     </PropertyGroup>
 </Project>

@@ -30,9 +30,10 @@ namespace Propertium.UnitTests.SearchProperties.Get
             {
                 // Arrange
                 var timeout = 50.Milliseconds();
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -50,9 +51,10 @@ namespace Propertium.UnitTests.SearchProperties.Get
             {
                 // Arrange
                 var timeout = 50.Milliseconds();
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationTokenSource.Token);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -71,7 +73,8 @@ namespace Propertium.UnitTests.SearchProperties.Get
                 // Arrange
                 var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver);
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationTokenSource.Token);
 
                 // Act
                 var actual = sut.Get(timeout);

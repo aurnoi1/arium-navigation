@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
-using Propertium.Exceptions;
 using System;
 using System.Threading;
 
@@ -35,18 +34,17 @@ namespace Propertium.Interfaces
 
         /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
+        /// The <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
-        /// The <see cref="DefaultCancellationToken"/> is mandatory when using this method.
         /// <returns>The matching WebElement.</returns>
-        /// <exception cref="OperationCanceledException">Thrown when any CancellationToken is cancelled.</exception>
-        /// <exception cref="UninitializedDefaultCancellationTokenException">Thrown when no CancellationToken is initialized.</exception>
+        /// <exception cref="OperationCanceledException">Thrown when DefaultCancellationToken is cancelled.</exception>
         W Find();
 
         /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
-        /// They will be linked to the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// They will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="OperationCanceledException">Thrown when any CancellationToken is cancelled.</exception>
         W Find(params CancellationToken[] cancellationTokens);
@@ -55,14 +53,14 @@ namespace Propertium.Interfaces
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
-        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="TimeoutException">Thrown when any timeout is reached before WebElement is found.</exception>
         W Find(TimeSpan timeout);
 
         /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
-        /// <see cref="DefaultCancellationToken"/> will be used if defined.
+        /// <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get();
@@ -70,16 +68,16 @@ namespace Propertium.Interfaces
         /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
-        /// <param name="timeout">The maximum amount of time to wait for the control to be found.
-        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
+        /// They will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get(params CancellationToken[] cancellationTokens);
 
         /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
-        /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
-        /// They will be linked to the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// <param name="timeout">The maximum amount of time to wait for the control to be found.
+        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get(TimeSpan timeout);
     }

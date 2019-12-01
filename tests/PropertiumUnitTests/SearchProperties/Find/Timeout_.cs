@@ -31,8 +31,9 @@ namespace Propertium.UnitTests.SearchProperties.Find
             {
                 // Arrange
                 var expected = webElements.ElementAt(index);
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
                 var timeout = 50.Milliseconds();
 
                 // Act
@@ -51,9 +52,10 @@ namespace Propertium.UnitTests.SearchProperties.Find
             {
                 // Arrange
                 var timeout = 50.Milliseconds();
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 int indexOutOfRange = webElements.Count + 1;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationTokenSource.Token);
 
                 // Assert
                 Assert.Throws<TimeoutException>(() => sut.Find(timeout));
@@ -68,7 +70,8 @@ namespace Propertium.UnitTests.SearchProperties.Find
             {
                 // Arrange
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver);
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationTokenSource.Token);
                 var timeout = 50.Milliseconds();
 
                 // Act

@@ -27,7 +27,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UIBtnNotImplemented => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "NotImplemented",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
@@ -35,7 +36,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "TitleMenu",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the BlueView.
@@ -43,7 +45,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UIBtnOpenBluePage => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "BtnOpenBlueView",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
@@ -51,7 +54,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UIBtnOpenRedPage => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "BtnOpenRedView",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
@@ -59,7 +63,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UIBtnOpenYellowPage => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "BtnOpenYellowView",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control where text can be enter.
@@ -67,7 +72,8 @@ namespace AUT.Facade.POMs
         public SearchProperty<IWebElement> UITxtBoxImportantMessage => new SearchProperty<IWebElement>(
             MobileSelector.Accessibility,
             "TxtBoxImportantMessage",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         #endregion Controls
 

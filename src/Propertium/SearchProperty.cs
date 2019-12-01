@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
-using Propertium.Exceptions;
 using Propertium.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -26,29 +25,6 @@ namespace Propertium
             IFindsByFluentSelector<W> webDriver,
             CancellationToken defaultCancellationToken)
             : this(locator, value, webDriver, 0, defaultCancellationToken)
-        {
-        }
-
-        public SearchProperty(
-            string locator,
-            string value,
-            IFindsByFluentSelector<W> webDriver,
-            int index)
-            : this(locator, value, webDriver, index, default)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SearchProperty"/> class.
-        /// </summary>
-        /// <param name="locator"></param>
-        /// <param name="value"></param>
-        /// <param name="webDriver"></param>
-        /// <param name="defaultCancellationToken"></param>
-        public SearchProperty(
-            string locator,
-            string value,
-            IFindsByFluentSelector<W> webDriver) : this(locator, value, webDriver, defaultCancellationToken: default)
         {
         }
 
@@ -95,18 +71,17 @@ namespace Propertium
 
         /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
+        /// The <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
-        /// The <see cref="DefaultCancellationToken"/> is mandatory when using this method.
         /// <returns>The matching WebElement.</returns>
-        /// <exception cref="OperationCanceledException">Thrown when any CancellationToken is cancelled.</exception>
-        /// <exception cref="UninitializedDefaultCancellationTokenException">Thrown when no CancellationToken is initialized.</exception>
+        /// <exception cref="OperationCanceledException">Thrown when DefaultCancellationToken is cancelled.</exception>
         public W Find() => Find(cancellationTokens: null);
 
         /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
-        /// They will be linked to the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// They will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="OperationCanceledException">Thrown when any CancellationToken is cancelled.</exception>
         public W Find(params CancellationToken[] cancellationTokens)
@@ -122,7 +97,7 @@ namespace Propertium
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
-        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="TimeoutException">Thrown when any timeout is reached before WebElement is found.</exception>
         public W Find(TimeSpan timeout)
@@ -145,7 +120,7 @@ namespace Propertium
 
         /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
-        /// <see cref="DefaultCancellationToken"/> will be used if defined.
+        /// <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         public W Get()
@@ -164,7 +139,7 @@ namespace Propertium
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
-        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         public W Get(TimeSpan timeout)
         {
@@ -178,7 +153,7 @@ namespace Propertium
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
-        /// They will be linked to the <see cref="DefaultCancellationToken"/> if defined.</param>
+        /// They will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         public W Get(params CancellationToken[] cancellationTokens)
         {
@@ -203,26 +178,16 @@ namespace Propertium
         }
 
         /// <summary>
-        /// Link CancellationToken pass as parameter and the DefaultCancellationToken if initialized.
+        /// Link CancellationToken pass as parameter and the DefaultCancellationToken.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens to link.</param>
         /// <returns>The linked CancellationTokens.</returns>
-        /// <exception cref="UninitializedDefaultCancellationTokenException">Thrown when no CancellationToken is initialized.</exception>
         private CancellationToken[] LinkCancellationTokens(params CancellationToken[] cancellationTokens)
         {
-            var linkedTokens = new List<CancellationToken>();
-            if (cancellationTokens == null || cancellationTokens.Length == 0)
+            var linkedTokens = new List<CancellationToken>
             {
-                if (DefaultCancellationToken == null || DefaultCancellationToken == CancellationToken.None)
-                {
-                    throw new UninitializedDefaultCancellationTokenException();
-                }
-            }
-
-            if (DefaultCancellationToken != CancellationToken.None)
-            {
-                linkedTokens.Add(DefaultCancellationToken);
-            }
+                DefaultCancellationToken
+            };
 
             if (cancellationTokens != null)
             {

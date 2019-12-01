@@ -34,7 +34,8 @@ namespace Propertium.UnitTests.SearchProperties
             string value)
         {
             // Arrange, Act
-            var actual = new SearchProperty<IWebElement>(locator, value, webDriver, index);
+            using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
+            var actual = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
 
             // Assert
             actual.ShouldNotBeNull();
@@ -49,7 +50,8 @@ namespace Propertium.UnitTests.SearchProperties
             string value)
         {
             // Arrange, Act
-            var actual = new SearchProperty<IWebElement>(locator, value, webDriver, index);
+            using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
+            var actual = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
 
             // Assert
             actual.Locator.ShouldBe(locator);
@@ -66,7 +68,8 @@ namespace Propertium.UnitTests.SearchProperties
             string value)
         {
             // Arrange, Act
-            var actual = new SearchProperty<IWebElement>(locator, value, webDriver, index);
+            var noneCancellationToken = CancellationToken.None;
+            var actual = new SearchProperty<IWebElement>(locator, value, webDriver, index, noneCancellationToken);
 
             // Assert
             actual.DefaultCancellationToken.ShouldBe(CancellationToken.None);
@@ -250,10 +253,12 @@ namespace Propertium.UnitTests.SearchProperties
             string value)
         {
             // Arrange, Act
+            using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
             var actual = new SearchProperty<IWebElement>(
                 locator,
                 value,
-                webDriver);
+                webDriver,
+                defaultCancellationTokenSource.Token);
 
             // Assert
             actual.ShouldNotBeNull();
@@ -267,10 +272,12 @@ namespace Propertium.UnitTests.SearchProperties
             string value)
         {
             // Arrange, Act
+            using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
             var actual = new SearchProperty<IWebElement>(
                 locator,
                 value,
-                webDriver);
+                webDriver, 
+                defaultCancellationTokenSource.Token);
 
             // Assert
             actual.Locator.ShouldBe(locator);
@@ -280,32 +287,18 @@ namespace Propertium.UnitTests.SearchProperties
         }
 
         [Theory, AutoMoqData]
-        public void When_no_defaultCancellationToken_Then_DefaultCancellationToken_is_None(
-            IFindsByFluentSelector<IWebElement> webDriver,
-            string locator,
-            string value)
-        {
-            // Arrange, Act
-            var actual = new SearchProperty<IWebElement>(
-                locator,
-                value,
-                webDriver);
-
-            // Assert
-            actual.DefaultCancellationToken.ShouldBe(CancellationToken.None);
-        }
-
-        [Theory, AutoMoqData]
         public void When_no_index_is_defined_Then_Index_is_0(
              IFindsByFluentSelector<IWebElement> webDriver,
              string locator,
              string value)
         {
             // Arrange, Act
+            using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
             var actual = new SearchProperty<IWebElement>(
                 locator,
                 value,
-                webDriver);
+                webDriver,
+                defaultCancellationTokenSource.Token);
 
             // Assert
             actual.Index.ShouldBe(0);
