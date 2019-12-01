@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Arium;
-using IC.Tests.App.Poms.Appium;
-using IC.Tests.App.Poms.Appium.POMs;
+using AUT.Facade;
+using AUT.Facade.POMs;
 using TimeoutEx;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Service;
@@ -40,7 +40,7 @@ namespace NavBrowser.Tests
             var splited = Environment.CurrentDirectory.Split('\\').ToList();
             var build = splited.ElementAt(splited.IndexOf("bin") + 1);
             var testsDir = Environment.CurrentDirectory.Replace($@"AriumUITests\bin\{build}\netcoreapp3.0", "");
-            string path = $@"{testsDir}\IC.Tests.App\bin\{build}\IC.Tests.App.exe";
+            string path = $@"{testsDir}\AUT\bin\{build}\AUT.exe";
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException($"The application under tests \"{path}\" was not found.");
