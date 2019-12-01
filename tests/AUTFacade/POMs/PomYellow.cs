@@ -1,11 +1,11 @@
 ﻿using Arium;
 using Arium.Enums;
-using Propertium;
-using Propertium.WindowsDriver;
 using Arium.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Remote;
+using Propertium;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -23,19 +23,19 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
         /// </summary>
-        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(WindowDriverLocators.AutomationId, "TitleYellow", map.RemoteDriver);
+        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(MobileSelector.Accessibility, "TitleYellow", map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(WindowDriverLocators.AutomationId, "BtnBack", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(MobileSelector.Accessibility, "BtnBack", map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnOpenMenuPage => new SearchProperty<IWebElement>(
-            WindowDriverLocators.AutomationId, 
-            "BtnOpenMenuView", 
+            MobileSelector.Accessibility,
+            "BtnOpenMenuView",
             map.RemoteDriver);
 
         #endregion Controls
