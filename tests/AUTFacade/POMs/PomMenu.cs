@@ -25,8 +25,8 @@ namespace AUT.Facade.POMs
         /// WDSearchProperties to find a control NOT IMPLEMENTED only use for negative test.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnNotImplemented => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "NotImplemented", 
+            MobileSelector.Accessibility,
+            "NotImplemented",
             map.RemoteDriver);
 
         /// <summary>
@@ -41,32 +41,32 @@ namespace AUT.Facade.POMs
         /// WDSearchProperties to find a control to open the BlueView.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnOpenBluePage => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "BtnOpenBlueView", 
+            MobileSelector.Accessibility,
+            "BtnOpenBlueView",
             map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnOpenRedPage => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "BtnOpenRedView", 
+            MobileSelector.Accessibility,
+            "BtnOpenRedView",
             map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnOpenYellowPage => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "BtnOpenYellowView", 
+            MobileSelector.Accessibility,
+            "BtnOpenYellowView",
             map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control where text can be enter.
         /// </summary>
         public SearchProperty<IWebElement> UITxtBoxImportantMessage => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "TxtBoxImportantMessage", 
+            MobileSelector.Accessibility,
+            "TxtBoxImportantMessage",
             map.RemoteDriver);
 
         #endregion Controls

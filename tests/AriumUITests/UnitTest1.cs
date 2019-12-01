@@ -1,8 +1,7 @@
-using FluentAssertions;
 using Arium;
 using AUT.Facade;
 using AUT.Facade.POMs;
-using TimeoutEx;
+using FluentAssertions;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Appium.Windows;
@@ -10,6 +9,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
 namespace NavBrowser.Tests

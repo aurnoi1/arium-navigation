@@ -1,8 +1,7 @@
 ﻿using AutoFixture.Xunit2;
-using Propertium;
-using Propertium.UnitTests.DataAttributes;
 using Moq;
 using OpenQA.Selenium;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
 using System;
 using System.Threading;

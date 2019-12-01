@@ -1,7 +1,5 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
-using Propertium;
-using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using System;
@@ -9,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
 namespace Propertium.UnitTests.WebElementEx.Wait

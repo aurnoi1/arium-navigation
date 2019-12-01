@@ -1,7 +1,6 @@
-﻿using Propertium;
-using Propertium.UnitTests.DataAttributes;
-using Moq;
+﻿using Moq;
 using OpenQA.Selenium;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
 using System;
 using System.Collections.Generic;

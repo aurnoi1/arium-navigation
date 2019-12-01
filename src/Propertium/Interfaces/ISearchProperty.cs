@@ -1,6 +1,6 @@
-﻿using Propertium.Exceptions;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
+using Propertium.Exceptions;
 using System;
 using System.Threading;
 

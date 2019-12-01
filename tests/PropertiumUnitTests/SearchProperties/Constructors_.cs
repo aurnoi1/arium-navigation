@@ -1,14 +1,13 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using AutoFixture.Idioms;
-using Propertium;
-using Propertium.Interfaces;
-using Propertium.UnitTests.DataAttributes;
-using TimeoutEx;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
+using Propertium.Interfaces;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
 namespace Propertium.UnitTests.SearchProperties

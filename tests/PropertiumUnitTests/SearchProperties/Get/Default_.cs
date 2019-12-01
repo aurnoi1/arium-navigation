@@ -1,14 +1,13 @@
 ﻿using AutoFixture.Xunit2;
-using Propertium;
-using Propertium.UnitTests.DataAttributes;
-using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
 namespace Propertium.UnitTests.SearchProperties.Get

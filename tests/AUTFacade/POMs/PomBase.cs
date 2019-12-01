@@ -1,7 +1,6 @@
 ﻿using Arium;
 using Arium.Enums;
 using Arium.Interfaces;
-using AUT.Facade.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Remote;

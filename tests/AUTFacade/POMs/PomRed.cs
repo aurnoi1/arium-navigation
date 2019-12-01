@@ -32,16 +32,16 @@ namespace AUT.Facade.POMs
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "BtnBack", 
+            MobileSelector.Accessibility,
+            "BtnBack",
             map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the yellow page.
         /// </summary>
         public SearchProperty<IWebElement> UIBtnOpenYellowPage => new SearchProperty<IWebElement>(
-            MobileSelector.Accessibility, 
-            "BtnOpenYellowView", 
+            MobileSelector.Accessibility,
+            "BtnOpenYellowView",
             map.RemoteDriver);
 
         #endregion Controls

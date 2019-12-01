@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoFixture;
+﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using AutoFixture.Xunit2;
+using System.Collections.Generic;
 
 namespace Propertium.UnitTests.DataAttributes
 {

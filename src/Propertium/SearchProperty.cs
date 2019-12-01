@@ -1,7 +1,7 @@
-﻿using Propertium.Exceptions;
-using Propertium.Interfaces;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
+using Propertium.Exceptions;
+using Propertium.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -23,12 +23,18 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
         /// </summary>
-        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(MobileSelector.Accessibility, "TitleYellow", map.RemoteDriver);
+        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility, 
+            "TitleYellow", 
+            map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(MobileSelector.Accessibility, "BtnBack", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility, 
+            "BtnBack", 
+            map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
