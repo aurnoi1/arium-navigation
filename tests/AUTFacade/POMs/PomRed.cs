@@ -23,17 +23,20 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
         /// </summary>
-        public SearchProperties<IWebElement> UITitle => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "TitleRed", map.RemoteDriver);
+        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(
+            WindowDriverLocators.AutomationId, 
+            "TitleRed", 
+            map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnBack => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnBack", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(WindowDriverLocators.AutomationId, "BtnBack", map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the yellow page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnOpenYellowPage => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnOpenYellowView", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnOpenYellowPage => new SearchProperty<IWebElement>(WindowDriverLocators.AutomationId, "BtnOpenYellowView", map.RemoteDriver);
 
         #endregion Controls
 

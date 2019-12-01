@@ -2,16 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0-beta903</Version>
+    <Version>1.0.0-beta0001</Version>
     <Authors>Aurelien Noisette</Authors>
-    <Description>Provides extension methods to create TimeSpan as timeout expressed with the International System.</Description>
+    <Description>Provides extension methods to create TimeSpan as timeout expressed in the International System.</Description>
     <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/aurnoi1/IC-Navigation</PackageProjectUrl>
-    <PackageTags>Test Automation Timeout</PackageTags>
+    <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
+    <PackageTags>Test Automation Timeout TimeSpan</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>v1.0.0-beta903:
-- Support Int32, String and custom regex pattern.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

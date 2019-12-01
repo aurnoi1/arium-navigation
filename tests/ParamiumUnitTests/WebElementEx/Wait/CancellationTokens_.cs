@@ -34,7 +34,7 @@ namespace Paramium.UnitTests.WebElementEx.Wait
                 var cancellationToken = cancellationTokenSource.Token;
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index);
 
                 // Act
                 var actual = sut.Get(cancellationToken);
@@ -55,7 +55,7 @@ namespace Paramium.UnitTests.WebElementEx.Wait
                 var cancellationToken = cancellationTokenSource.Token;
                 int indexOutOfRange = webElements.Count + 1;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange);
 
                 // Act
                 var actual = sut.Get(cancellationToken);
@@ -86,7 +86,7 @@ namespace Paramium.UnitTests.WebElementEx.Wait
                 var cancellationToken = cancellationTokenSource.Token;
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
 
                 // Act
                 var actual = sut.Get(cancellationToken);
@@ -109,7 +109,7 @@ namespace Paramium.UnitTests.WebElementEx.Wait
                 var cancellationToken = cancellationTokenSource.Token;
                 int indexOutOfRange = webElements.Count + 1;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
 
                 // Act
                 var actual = sut.Get(cancellationToken);

@@ -24,7 +24,7 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the title of this page.
         /// </summary>
-        public SearchProperties<IWebElement> UILblTitle => new SearchProperties<IWebElement>(
+        public SearchProperty<IWebElement> UILblTitle => new SearchProperty<IWebElement>(
             WindowDriverLocators.AutomationId,
             "TitleBlue",
             map.RemoteDriver);
@@ -32,7 +32,7 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnBack => new SearchProperties<IWebElement>(
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(
             WindowDriverLocators.AutomationId,
             "BtnBack",
             map.RemoteDriver);
@@ -40,7 +40,7 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find a control to open the yellow page.
         /// </summary>
-        public SearchProperties<IWebElement> BtnOpenYellowPage => new SearchProperties<IWebElement>(
+        public SearchProperty<IWebElement> BtnOpenYellowPage => new SearchProperty<IWebElement>(
             WindowDriverLocators.AutomationId,
             "BtnOpenYellowView",
             map.RemoteDriver);

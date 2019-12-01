@@ -23,17 +23,17 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
         /// </summary>
-        public SearchProperties<IWebElement> UITitle => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "TitleYellow", map.RemoteDriver);
+        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(WindowDriverLocators.AutomationId, "TitleYellow", map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnBack => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnBack", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(WindowDriverLocators.AutomationId, "BtnBack", map.RemoteDriver);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnOpenMenuPage => new SearchProperties<IWebElement>(
+        public SearchProperty<IWebElement> UIBtnOpenMenuPage => new SearchProperty<IWebElement>(
             WindowDriverLocators.AutomationId, 
             "BtnOpenMenuView", 
             map.RemoteDriver);

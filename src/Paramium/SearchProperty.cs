@@ -9,18 +9,18 @@ using System.Threading;
 
 namespace Paramium
 {
-    public class SearchProperties<W> : ISearchProperties<W> where W : IWebElement
+    public class SearchProperty<W> : ISearchProperty<W> where W : IWebElement
     {
         private const string timeoutExceptionMessage = "The timeout has been reached before the Element could be found.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchProperties"/> class.
+        /// Initializes a new instance of the <see cref="SearchProperty"/> class.
         /// </summary>
         /// <param name="locator"></param>
         /// <param name="value"></param>
         /// <param name="webDriver"></param>
         /// <param name="defaultCancellationToken"></param>
-        public SearchProperties(
+        public SearchProperty(
             string locator,
             string value,
             IFindsByFluentSelector<W> webDriver,
@@ -29,7 +29,7 @@ namespace Paramium
         {
         }
 
-        public SearchProperties(
+        public SearchProperty(
             string locator,
             string value,
             IFindsByFluentSelector<W> webDriver,
@@ -39,20 +39,20 @@ namespace Paramium
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchProperties"/> class.
+        /// Initializes a new instance of the <see cref="SearchProperty"/> class.
         /// </summary>
         /// <param name="locator"></param>
         /// <param name="value"></param>
         /// <param name="webDriver"></param>
         /// <param name="defaultCancellationToken"></param>
-        public SearchProperties(
+        public SearchProperty(
             string locator,
             string value,
             IFindsByFluentSelector<W> webDriver) : this(locator, value, webDriver, defaultCancellationToken: default)
         {
         }
 
-        public SearchProperties(
+        public SearchProperty(
             string locator,
             string value,
             IFindsByFluentSelector<W> webDriver,
@@ -94,7 +94,7 @@ namespace Paramium
         #region Find Methods
 
         /// <summary>
-        /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperties.
+        /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// The <see cref="DefaultCancellationToken"/> is mandatory when using this method.
         /// <returns>The matching WebElement.</returns>
@@ -103,7 +103,7 @@ namespace Paramium
         public W Find() => Find(cancellationTokens: null);
 
         /// <summary>
-        /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperties.
+        /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
         /// They will be linked to the <see cref="DefaultCancellationToken"/> if defined.</param>
@@ -119,7 +119,7 @@ namespace Paramium
         }
 
         /// <summary>
-        /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperties.
+        /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
         /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/> if defined.</param>
@@ -144,7 +144,7 @@ namespace Paramium
         #region Get Methods
 
         /// <summary>
-        /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperties.
+        /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// <see cref="DefaultCancellationToken"/> will be used if defined.
         /// </summary>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
@@ -161,7 +161,7 @@ namespace Paramium
         }
 
         /// <summary>
-        /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperties.
+        /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
         /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/> if defined.</param>
@@ -175,7 +175,7 @@ namespace Paramium
         }
 
         /// <summary>
-        /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperties.
+        /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
         /// They will be linked to the <see cref="DefaultCancellationToken"/> if defined.</param>

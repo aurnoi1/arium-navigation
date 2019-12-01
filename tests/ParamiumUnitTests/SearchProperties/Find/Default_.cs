@@ -32,7 +32,7 @@ namespace Paramium.UnitTests.SearchProperties.Find
                 // Arrange
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(
+                var sut = new SearchProperty<IWebElement>(
                     locator,
                     value,
                     webDriver,
@@ -60,7 +60,7 @@ namespace Paramium.UnitTests.SearchProperties.Find
                 using var defaultCancellationTokenSource = new CancellationTokenSource(TimeSpan.Zero);
                 var expiredDefaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(
+                var sut = new SearchProperty<IWebElement>(
                     locator,
                     value,
                     webDriver,
@@ -83,7 +83,7 @@ namespace Paramium.UnitTests.SearchProperties.Find
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(
+                var sut = new SearchProperty<IWebElement>(
                     locator,
                     value,
                     webDriver,
@@ -114,7 +114,7 @@ namespace Paramium.UnitTests.SearchProperties.Find
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(
+                var sut = new SearchProperty<IWebElement>(
                     locator,
                     value,
                     webDriver,
@@ -140,7 +140,7 @@ namespace Paramium.UnitTests.SearchProperties.Find
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(
+                var sut = new SearchProperty<IWebElement>(
                     locator,
                     value,
                     webDriver,
@@ -162,7 +162,7 @@ namespace Paramium.UnitTests.SearchProperties.Find
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationToken);
 
                 // Act
                 var actual = sut.Find();

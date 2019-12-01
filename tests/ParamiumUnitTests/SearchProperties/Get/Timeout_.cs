@@ -33,7 +33,7 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 var timeout = 50.Milliseconds();
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -53,7 +53,7 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -72,7 +72,7 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 // Arrange
                 var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -102,7 +102,7 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 var timeout = 50.Milliseconds();
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -124,7 +124,7 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
 
                 // Act
                 var actual = sut.Get(timeout);
@@ -146,7 +146,7 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationToken);
 
                 // Act
                 var actual = sut.Get(timeout);
