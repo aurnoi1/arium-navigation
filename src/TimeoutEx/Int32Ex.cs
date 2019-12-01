@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace IC.TimeoutEx
+namespace TimeoutEx
 {
-    public static class DoubleEx
+    public static class Int32Ex
     {
         /// <summary>
         /// Return a TimeSpan from seconds.
@@ -12,7 +12,7 @@ namespace IC.TimeoutEx
         /// <returns>The Timeout.</returns>
         [SuppressMessage("Style", "IDE1006:Naming Styles",
             Justification = "To respect International System of Units.")]
-        public static TimeSpan s(this double timeout)
+        public static TimeSpan s(this int timeout)
         {
             return TimeSpan.FromSeconds(timeout);
         }
@@ -22,7 +22,7 @@ namespace IC.TimeoutEx
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The Timeout.</returns>
-        public static TimeSpan Seconds(this double timeout)
+        public static TimeSpan Seconds(this int timeout)
         {
             return timeout.s();
         }
@@ -34,7 +34,7 @@ namespace IC.TimeoutEx
         /// <returns>The Timeout.</returns>
         [SuppressMessage("Style", "IDE1006:Naming Styles",
             Justification = "To respect International System of Units.")]
-        public static TimeSpan ms(this double timeout)
+        public static TimeSpan ms(this int timeout)
         {
             return TimeSpan.FromMilliseconds(timeout);
         }
@@ -44,7 +44,7 @@ namespace IC.TimeoutEx
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The Timeout.</returns>
-        public static TimeSpan Milliseconds(this double timeout)
+        public static TimeSpan Milliseconds(this int timeout)
         {
             return timeout.ms();
         }
@@ -56,7 +56,7 @@ namespace IC.TimeoutEx
         /// <returns>The Timeout.</returns>
         [SuppressMessage("Style", "IDE1006:Naming Styles",
             Justification = "To respect International System of Units.")]
-        public static TimeSpan m(this double timeout)
+        public static TimeSpan m(this int timeout)
         {
             return TimeSpan.FromMinutes(timeout);
         }
@@ -66,7 +66,7 @@ namespace IC.TimeoutEx
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The Timeout.</returns>
-        public static TimeSpan Minutes(this double timeout)
+        public static TimeSpan Minutes(this int timeout)
         {
             return timeout.m();
         }
@@ -78,7 +78,7 @@ namespace IC.TimeoutEx
         /// <returns>The Timeout.</returns>
         [SuppressMessage("Style", "IDE1006:Naming Styles",
             Justification = "To respect International System of Units.")]
-        public static TimeSpan h(this double timeout)
+        public static TimeSpan h(this int timeout)
         {
             return TimeSpan.FromHours(timeout);
         }
@@ -88,7 +88,7 @@ namespace IC.TimeoutEx
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The Timeout.</returns>
-        public static TimeSpan Hours(this double timeout)
+        public static TimeSpan Hours(this int timeout)
         {
             return timeout.h();
         }

@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IC.Tests.App", "tests\IC.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IC.Tests.App.Poms", "tests\IC.Tests.App.Poms\IC.Tests.App.Poms.csproj", "{38E50D56-EE60-4BC9-926E-A8500BBE0C0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IC.TimeoutEx", "src\IC.TimeoutEx\IC.TimeoutEx.csproj", "{ED8220D9-E3A9-4B6B-A54A-4B6C6930DCB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeoutEx", "src\TimeoutEx\TimeoutEx.csproj", "{ED8220D9-E3A9-4B6B-A54A-4B6C6930DCB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IC.TimeoutEx.UnitTests", "tests\IC.TimeoutEx.UnitTests\IC.TimeoutEx.UnitTests.csproj", "{AA2B0E68-1C1D-4357-921D-A1DD18E3B258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeoutEx.UnitTests", "tests\TimeoutEx.UnitTests\TimeoutEx.UnitTests.csproj", "{AA2B0E68-1C1D-4357-921D-A1DD18E3B258}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paramium.UnitTests", "tests\ParamiumUnitTests\Paramium.UnitTests.csproj", "{C8783CD8-E17F-461C-A4E5-BD9E68D57A05}"
 EndProject

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IC.TimeoutEx\IC.TimeoutEx.csproj" />
+    <ProjectReference Include="..\..\src\TimeoutEx\TimeoutEx.csproj" />
   </ItemGroup>
 
 </Project>

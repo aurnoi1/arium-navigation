@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace IC.TimeoutEx.UnitTests
+namespace TimeoutEx.UnitTests
 {
     public class StringExTests
     {

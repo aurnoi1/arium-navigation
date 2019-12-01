@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace IC.TimeoutEx.UnitTests
+namespace TimeoutEx.UnitTests
 {
     public class Int32ExTests
     {

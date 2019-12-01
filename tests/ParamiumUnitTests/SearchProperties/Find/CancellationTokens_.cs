@@ -1,7 +1,7 @@
 ﻿using AutoFixture.Xunit2;
 using Paramium;
 using Paramium.UnitTests.DataAttributes;
-using IC.TimeoutEx;
+using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;

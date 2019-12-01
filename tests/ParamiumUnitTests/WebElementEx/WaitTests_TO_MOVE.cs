@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using Paramium;
-using IC.TimeoutEx;
+using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using System;

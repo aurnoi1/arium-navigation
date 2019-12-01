@@ -2,7 +2,7 @@ using FluentAssertions;
 using Arium;
 using IC.Tests.App.Poms.Appium;
 using IC.Tests.App.Poms.Appium.POMs;
-using IC.TimeoutEx;
+using TimeoutEx;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Appium.Windows;

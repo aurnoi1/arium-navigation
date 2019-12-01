@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace IC.TimeoutEx
+namespace TimeoutEx
 {
     public class TimeoutEx
     {

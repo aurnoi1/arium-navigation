@@ -4,7 +4,7 @@ using AutoFixture.Idioms;
 using Paramium;
 using Paramium.Interfaces;
 using Paramium.UnitTests.DataAttributes;
-using IC.TimeoutEx;
+using TimeoutEx;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
 using Shouldly;

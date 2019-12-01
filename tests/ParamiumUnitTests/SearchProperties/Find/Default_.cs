@@ -2,7 +2,7 @@
 using Paramium;
 using Paramium.Exceptions;
 using Paramium.UnitTests.DataAttributes;
-using IC.TimeoutEx;
+using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;

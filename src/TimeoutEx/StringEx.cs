@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IC.TimeoutEx
+namespace TimeoutEx
 {
     public static class StringEx
     {
