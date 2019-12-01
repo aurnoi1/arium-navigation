@@ -1,12 +1,11 @@
 ﻿using Arium;
 using Arium.Enums;
-using Paramium;
-using Paramium.WindowsDriver;
 using Arium.Interfaces;
-using AUT.Facade.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Remote;
+using Propertium;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -24,26 +23,29 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the title of this page.
         /// </summary>
-        public SearchProperties<IWebElement> UILblTitle => new SearchProperties<IWebElement>(
-            WindowDriverLocators.AutomationId,
+        public SearchProperty<IWebElement> UILblTitle => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
             "TitleBlue",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnBack => new SearchProperties<IWebElement>(
-            WindowDriverLocators.AutomationId,
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
             "BtnBack",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the yellow page.
         /// </summary>
-        public SearchProperties<IWebElement> BtnOpenYellowPage => new SearchProperties<IWebElement>(
-            WindowDriverLocators.AutomationId,
+        public SearchProperty<IWebElement> BtnOpenYellowPage => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
             "BtnOpenYellowView",
-            map.RemoteDriver);
+            map.RemoteDriver,
+            globalCancellationToken);
 
         #endregion Controls
 

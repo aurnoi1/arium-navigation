@@ -1,11 +1,11 @@
 ﻿using Arium;
 using Arium.Enums;
-using Paramium;
-using Paramium.WindowsDriver;
 using Arium.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Remote;
+using Propertium;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -23,17 +23,29 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
         /// </summary>
-        public SearchProperties<IWebElement> UITitle => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "TitleRed", map.RemoteDriver);
+        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "TitleRed",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnBack => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnBack", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnBack => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "BtnBack",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the yellow page.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnOpenYellowPage => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnOpenYellowView", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnOpenYellowPage => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "BtnOpenYellowView",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         #endregion Controls
 

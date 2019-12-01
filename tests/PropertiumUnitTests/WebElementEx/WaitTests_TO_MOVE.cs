@@ -1,7 +1,5 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
-using Paramium;
-using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using System;
@@ -9,9 +7,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
-namespace Paramium.UnitTests.WebElementEx.Wait
+namespace Propertium.UnitTests.WebElementEx.Wait
 {
     public class WaitTests_TO_MOVE : IDisposable
     {

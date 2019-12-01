@@ -1,27 +1,25 @@
 ﻿using AutoFixture.Xunit2;
-using Paramium;
-using Paramium.UnitTests.DataAttributes;
-using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
-namespace Paramium.UnitTests.SearchProperties.Get
+namespace Propertium.UnitTests.SearchProperties.Find
 {
-    public class Timeout_
+    public class Default_
     {
-        public class Given_3_webElements_with_same_locator_properties_
+        public class Given_an_expired_defaultCancellationToken_3_webElements_with_same_locator_properties_
         {
             [Theory]
             [InlineAutoMoqData(0)]
-            [InlineAutoMoqData(1)]
-            [InlineAutoMoqData(2)]
-            public void When_index_is_between_0_and_2_Then_returns_webElement_at_matching_index(
+            public void When_try_to_find_Then_throws_OperationCanceledException(
                 int index,
                 IFindsByFluentSelector<IWebElement> webDriver,
                 [Frozen]IReadOnlyCollection<IWebElement> webElements,
@@ -30,55 +28,42 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 )
             {
                 // Arrange
-                var timeout = 50.Milliseconds();
                 var expected = webElements.ElementAt(index);
+                using var defaultCancellationTokenSource = new CancellationTokenSource(TimeSpan.Zero);
+                var expiredDefaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index);
+                var sut = new SearchProperty<IWebElement>(
+                    locator,
+                    value,
+                    webDriver,
+                    index,
+                    expiredDefaultCancellationToken);
 
-                // Act
-                var actual = sut.Get(timeout);
-
-                // Assert
-                actual.ShouldBe(expected);
+                // Act, Assert
+                Assert.Throws<OperationCanceledException>(() => sut.Find());
             }
 
             [Theory, AutoMoqData]
-            public void When_index_is_out_of_range_Then_returns_null(
+            public void When_index_is_out_of_range_Then_throws_OperationCanceledException(
                 IFindsByFluentSelector<IWebElement> webDriver,
                 [Frozen]IReadOnlyCollection<IWebElement> webElements,
                 string locator,
                 string value)
             {
                 // Arrange
-                var timeout = 50.Milliseconds();
+                using var defaultCancellationTokenSource = new CancellationTokenSource(50.ms());
+                var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange);
+                var sut = new SearchProperty<IWebElement>(
+                    locator,
+                    value,
+                    webDriver,
+                    indexOutOfRange,
+                    defaultCancellationToken);
 
-                // Act
-                var actual = sut.Get(timeout);
-
-                // Assert
-                actual.ShouldBeNull();
-            }
-
-            [Theory, AutoMoqData]
-            public void When_index_is_not_defined_Then_returns_first_WebElement(
-                IFindsByFluentSelector<IWebElement> webDriver,
-                [Frozen]IReadOnlyCollection<IWebElement> webElements,
-                string locator,
-                string value)
-            {
-                // Arrange
-                var timeout = 50.Milliseconds();
-                Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver);
-
-                // Act
-                var actual = sut.Get(timeout);
-
-                // Assert
-                actual.ShouldBe(webElements.First());
+                // Act, Assert
+                Assert.Throws<OperationCanceledException>(() => sut.Find());
             }
         }
 
@@ -99,20 +84,24 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 // Arrange
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
-                var timeout = 50.Milliseconds();
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(
+                    locator,
+                    value,
+                    webDriver,
+                    index,
+                    defaultCancellationToken);
 
                 // Act
-                var actual = sut.Get(timeout);
+                var actual = sut.Find();
 
                 // Assert
                 actual.ShouldBe(expected);
             }
 
             [Theory, AutoMoqData]
-            public void When_index_is_out_of_range_Then_returns_null(
+            public void When_index_is_out_of_range_Then_throws_OperationCanceledException(
                 IFindsByFluentSelector<IWebElement> webDriver,
                 [Frozen]IReadOnlyCollection<IWebElement> webElements,
                 string locator,
@@ -121,16 +110,17 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 // Arrange
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
-                var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(
+                    locator,
+                    value,
+                    webDriver,
+                    indexOutOfRange,
+                    defaultCancellationToken);
 
-                // Act
-                var actual = sut.Get(timeout);
-
-                // Assert
-                actual.ShouldBeNull();
+                // Act, Assert
+                Assert.Throws<OperationCanceledException>(() => sut.Find());
             }
 
             [Theory, AutoMoqData]
@@ -143,13 +133,11 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 // Arrange
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
-                var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationToken);
 
                 // Act
-                var actual = sut.Get(timeout);
+                var actual = sut.Find();
 
                 // Assert
                 actual.ShouldBe(webElements.First());

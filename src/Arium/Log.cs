@@ -1,15 +1,12 @@
 ﻿using Arium.Enums;
 using Arium.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Arium
 {
     public class Log : ILog
     {
-
         /// <summary>
         /// Lock to queue historic entries.
         /// </summary>
@@ -63,7 +60,6 @@ namespace Arium
             }
         }
 
-
         /// <summary>
         /// Set the last known INavigable is exists.
         /// </summary>
@@ -76,6 +72,5 @@ namespace Arium
                 Last = state.Navigable;
             }
         }
-
     }
 }

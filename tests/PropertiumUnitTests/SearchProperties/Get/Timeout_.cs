@@ -1,20 +1,18 @@
 ﻿using AutoFixture.Xunit2;
-using Paramium;
-using Paramium.UnitTests.DataAttributes;
-using TimeoutEx;
 using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using TimeoutEx;
 using Xunit;
 
-namespace Paramium.UnitTests.SearchProperties.Get
+namespace Propertium.UnitTests.SearchProperties.Get
 {
-    public class CancellationTokens_
+    public class Timeout_
     {
         public class Given_3_webElements_with_same_locator_properties_
         {
@@ -31,16 +29,14 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 )
             {
                 // Arrange
+                var timeout = 50.Milliseconds();
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 var expected = webElements.ElementAt(index);
-                using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(100));
-                using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(130));
-                var cancellationToken1 = cancellationTokenSource1.Token;
-                var cancellationToken2 = cancellationTokenSource2.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, index);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
 
                 // Act
-                var actual = sut.Get(cancellationToken1, cancellationToken2);
+                var actual = sut.Get(timeout);
 
                 // Assert
                 actual.ShouldBe(expected);
@@ -54,16 +50,14 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 string value)
             {
                 // Arrange
-                using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
-                using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
-                var cancellationToken1 = cancellationTokenSource1.Token;
-                var cancellationToken2 = cancellationTokenSource2.Token;
+                var timeout = 50.Milliseconds();
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationTokenSource.Token);
 
                 // Act
-                var actual = sut.Get(cancellationToken1, cancellationToken2);
+                var actual = sut.Get(timeout);
 
                 // Assert
                 actual.ShouldBeNull();
@@ -77,15 +71,13 @@ namespace Paramium.UnitTests.SearchProperties.Get
                 string value)
             {
                 // Arrange
-                using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
-                using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
-                var cancellationToken1 = cancellationTokenSource1.Token;
-                var cancellationToken2 = cancellationTokenSource2.Token;
+                var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver);
+                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationTokenSource.Token);
 
                 // Act
-                var actual = sut.Get(cancellationToken1, cancellationToken2);
+                var actual = sut.Get(timeout);
 
                 // Assert
                 actual.ShouldBe(webElements.First());
@@ -108,22 +100,14 @@ namespace Paramium.UnitTests.SearchProperties.Get
             {
                 // Arrange
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
-                using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
-                using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
-                var cancellationToken1 = cancellationTokenSource1.Token;
-                var cancellationToken2 = cancellationTokenSource2.Token;
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
+                var timeout = 50.Milliseconds();
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(
-                    locator,
-                    value,
-                    webDriver,
-                    index,
-                    defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
 
                 // Act
-                var actual = sut.Get(cancellationToken1, cancellationToken2);
+                var actual = sut.Get(timeout);
 
                 // Assert
                 actual.ShouldBe(expected);
@@ -138,17 +122,14 @@ namespace Paramium.UnitTests.SearchProperties.Get
             {
                 // Arrange
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
-                using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
-                using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
-                var cancellationToken1 = cancellationTokenSource1.Token;
-                var cancellationToken2 = cancellationTokenSource2.Token;
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
+                var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
                 int indexOutOfRange = webElements.Count + 1;
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
 
                 // Act
-                var actual = sut.Get(cancellationToken1, cancellationToken2);
+                var actual = sut.Get(timeout);
 
                 // Assert
                 actual.ShouldBeNull();
@@ -163,16 +144,14 @@ namespace Paramium.UnitTests.SearchProperties.Get
             {
                 // Arrange
                 using var defaultCancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
-                using var cancellationTokenSource1 = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
-                using var cancellationTokenSource2 = new CancellationTokenSource(TimeSpan.FromMilliseconds(70));
-                var cancellationToken1 = cancellationTokenSource1.Token;
-                var cancellationToken2 = cancellationTokenSource2.Token;
                 var defaultCancellationToken = defaultCancellationTokenSource.Token;
+                var timeout = 50.Milliseconds();
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperties<IWebElement>(locator, value, webDriver, defaultCancellationToken);
+                int indexOutOfRange = webElements.Count + 1;
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationToken);
 
                 // Act
-                var actual = sut.Get(cancellationToken1, cancellationToken2);
+                var actual = sut.Get(timeout);
 
                 // Assert
                 actual.ShouldBe(webElements.First());

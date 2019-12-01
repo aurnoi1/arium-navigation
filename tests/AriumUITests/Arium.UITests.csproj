@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Propertium\Propertium.csproj" />
     <ProjectReference Include="..\..\src\TimeoutEx\TimeoutEx.csproj" />
-    <ProjectReference Include="..\..\src\Paramium\Paramium.csproj" />
     <ProjectReference Include="..\..\src\Arium\Arium.csproj" />
     <ProjectReference Include="..\AUTFacade\AUT.Facade.csproj" />
     <ProjectReference Include="..\AUT\AUT.csproj" />

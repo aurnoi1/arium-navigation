@@ -1,14 +1,13 @@
 ﻿using AutoFixture.Xunit2;
-using Paramium;
-using Paramium.UnitTests.DataAttributes;
 using Moq;
 using OpenQA.Selenium;
+using Propertium.UnitTests.DataAttributes;
 using Shouldly;
 using System;
 using System.Threading;
 using Xunit;
 
-namespace Paramium.UnitTests.WebElementEx.Wait
+namespace Propertium.UnitTests.WebElementEx.Wait
 {
     public class CancellationToken_attributeName_attributeValue_
     {

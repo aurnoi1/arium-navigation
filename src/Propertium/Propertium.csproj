@@ -5,26 +5,19 @@
         <LangVersion>8</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
-        <Description>Provide Appium extension features for Arium.</Description>
-        <PackageProjectUrl>https://github.com/aurnoi1/IC-Navigation</PackageProjectUrl>
-        <PackageTags>Arium Test Automation Arium.Extension</PackageTags>
+        <Description>Get WebElement from SearchProperty.</Description>
+        <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
+        <PackageTags>Arium Test Automation Appium Propertium</PackageTags>
         <PackageLicenseUrl></PackageLicenseUrl>
-        <Version>1.0.0-beta903</Version>
+        <Version>1.0.0-beta0001</Version>
         <Authors>Aurelien Noisette</Authors>
         <Company>Aurelien Noisette</Company>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-        <PackageReleaseNotes>v1.0.0-beta903:
-Major refactoring and breaking changes!
-- Renaming of Arium.Extensions to Arium.Extension.Appium.
-- Add implementation of SearchProperties instead to extend WebDriver. This allows more liberty when using when requesting for an element.</PackageReleaseNotes>
+        <PackageReleaseNotes></PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Appium.WebDriver" Version="4.1.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Arium\Arium.csproj" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

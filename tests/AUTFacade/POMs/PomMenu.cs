@@ -1,12 +1,11 @@
 ﻿using Arium;
 using Arium.Enums;
-using Paramium;
-using Paramium.WindowsDriver;
 using Arium.Interfaces;
-using AUT.Facade.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Remote;
+using Propertium;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -25,35 +24,56 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// WDSearchProperties to find a control NOT IMPLEMENTED only use for negative test.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnNotImplemented => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "NotImplemented", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnNotImplemented => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "NotImplemented",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
         /// </summary>
-        public SearchProperties<IWebElement> UITitle => new SearchProperties<IWebElement>(
-            WindowDriverLocators.AutomationId,
-            "TitleMenu", 
-            map.RemoteDriver);
+        public SearchProperty<IWebElement> UITitle => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "TitleMenu",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the BlueView.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnOpenBluePage => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnOpenBlueView", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnOpenBluePage => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "BtnOpenBlueView",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnOpenRedPage => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnOpenRedView", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnOpenRedPage => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "BtnOpenRedView",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
         /// </summary>
-        public SearchProperties<IWebElement> UIBtnOpenYellowPage => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "BtnOpenYellowView", map.RemoteDriver);
+        public SearchProperty<IWebElement> UIBtnOpenYellowPage => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "BtnOpenYellowView",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         /// <summary>
         /// WDSearchProperties to find a control where text can be enter.
         /// </summary>
-        public SearchProperties<IWebElement> UITxtBoxImportantMessage => new SearchProperties<IWebElement>(WindowDriverLocators.AutomationId, "TxtBoxImportantMessage", map.RemoteDriver);
+        public SearchProperty<IWebElement> UITxtBoxImportantMessage => new SearchProperty<IWebElement>(
+            MobileSelector.Accessibility,
+            "TxtBoxImportantMessage",
+            map.RemoteDriver,
+            globalCancellationToken);
 
         #endregion Controls
 

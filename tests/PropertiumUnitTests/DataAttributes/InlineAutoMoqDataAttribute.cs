@@ -2,7 +2,7 @@
 using Xunit;
 using Xunit.Sdk;
 
-namespace Paramium.UnitTests.DataAttributes
+namespace Propertium.UnitTests.DataAttributes
 {
     public class InlineAutoMoqDataAttribute : CompositeDataAttribute
     {
