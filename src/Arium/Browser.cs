@@ -29,8 +29,22 @@ namespace Arium
         public IBrowser Do(Action action)
         {
             var last = Log.Last;
-            void CreateAction(CancellationToken ct) => action();
-            Navigator.Do(last, CreateAction, GlobalCancellationToken);
+            void CreateUncancellableAction(CancellationToken ct) => action();
+            Navigator.Do(last, CreateUncancellableAction, GlobalCancellationToken);
+            return this;
+        }
+
+        /// <summary>
+        /// Executes the action passed in parameter on the last Navigable.
+        /// GlobalCancellationToken will be used to interrupt the task as soon as possible.
+        /// </summary>
+        /// <param name="action">The Action to execute.</param>m>
+        /// <returns>This Browser.</returns>
+        public IBrowser Do(Action<CancellationToken> action)
+        {
+            var last = Log.Last;
+            void createAction(CancellationToken ct) => action(ct);
+            Navigator.Do(last, createAction, GlobalCancellationToken);
             return this;
         }
 
@@ -43,7 +57,21 @@ namespace Arium
         public IBrowser Do<T>(Func<INavigable> function) where T : INavigable
         {
             var last = Log.Last;
-            INavigable CreateFunction(CancellationToken ct) => function();
+            INavigable CreateUncancellableFunction(CancellationToken ct) => function();
+            Navigator.Do<T>(last, CreateUncancellableFunction, GlobalCancellationToken);
+            return this;
+        }
+
+        /// <summary>
+        /// Executes the Function passed in parameter on the last Navigable.
+        /// GlobalCancellationToken will be used to interrupt the task as soon as possible.
+        /// </summary>
+        /// <param name="function">The Function to execute.</param>
+        /// <returns>This Browser.</returns>
+        public IBrowser Do<T>(Func<CancellationToken, INavigable> function) where T : INavigable
+        {
+            var last = Log.Last;
+            INavigable CreateFunction(CancellationToken ct) => function(ct);
             Navigator.Do<T>(last, CreateFunction, GlobalCancellationToken);
             return this;
         }

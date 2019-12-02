@@ -55,8 +55,11 @@ namespace Arium
         {
             cancellationToken.ThrowIfCancellationRequested();
             WaitForReady(navigable, cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             action.Invoke(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             WaitForExist(navigable, cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             return navigable;
         }
 
@@ -77,8 +80,11 @@ namespace Arium
         {
             cancellationToken.ThrowIfCancellationRequested();
             WaitForReady(navigable, cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             INavigable retINavigable = function.Invoke(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             WaitForExist(retINavigable, cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             return retINavigable;
         }
 
