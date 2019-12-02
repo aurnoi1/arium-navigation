@@ -8,9 +8,9 @@ namespace Propertium.Interfaces
     public interface ISearchProperty<W> where W : IWebElement
     {
         /// <summary>
-        /// The default CancellationToken to interrupt a search of the WebElement.
+        /// The default timeout to interrupt a search of the WebElement.
         /// </summary>
-        CancellationToken DefaultCancellationToken { get; }
+        TimeSpan DefaultTimeout { get; }
 
         /// <summary>
         /// The index of the WebElement in the collection of matching WebElements.
@@ -18,12 +18,12 @@ namespace Propertium.Interfaces
         int Index { get; set; }
 
         /// <summary>
-        /// Locator to find the WebElement.
+        /// Selector to find the WebElement.
         /// </summary>
-        string Locator { get; set; }
+        string Selector { get; set; }
 
         /// <summary>
-        /// Value of the Locator.
+        /// Value of the Selector.
         /// </summary>
         string Value { get; set; }
 
@@ -34,7 +34,7 @@ namespace Propertium.Interfaces
 
         /// <summary>
         /// Search immediately the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
-        /// The <see cref="DefaultCancellationToken"/> has no effect on this task.
+        /// The <see cref="DefaultTimeout"/> has no effect on this task.
         /// </summary>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="WebDriverException">Thrown when no element is found.</exception>
@@ -43,17 +43,17 @@ namespace Propertium.Interfaces
 
         /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
-        /// The <see cref="DefaultCancellationToken"/> will be used to cancel the task.
+        /// The <see cref="DefaultTimeout"/> will be used to cancel the task.
         /// </summary>
         /// <returns>The matching WebElement.</returns>
-        /// <exception cref="OperationCanceledException">Thrown when DefaultCancellationToken is cancelled.</exception>
+        /// <exception cref="OperationCanceledException">Thrown when DefaultTimeout is cancelled.</exception>
         W Find();
 
         /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
-        /// They will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
+        /// They will run in concurence of the <see cref="DefaultTimeout"/>.</param>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="OperationCanceledException">Thrown when any CancellationToken is cancelled.</exception>
         W Find(params CancellationToken[] cancellationTokens);
@@ -62,21 +62,21 @@ namespace Propertium.Interfaces
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
-        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
+        /// This timeout will run in concurence of the <see cref="DefaultTimeout"/>.</param>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="TimeoutException">Thrown when any timeout is reached before WebElement is found.</exception>
         W Find(TimeSpan timeout);
 
         /// <summary>
         /// Get immediately the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
-        /// The <see cref="DefaultCancellationToken"/> has no effect on this task.
+        /// The <see cref="DefaultTimeout"/> has no effect on this task.
         /// </summary>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W GetNow();
 
         /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
-        /// <see cref="DefaultCancellationToken"/> will be used to cancel the task.
+        /// <see cref="DefaultTimeout"/> will be used to cancel the task.
         /// </summary>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get();
@@ -85,7 +85,7 @@ namespace Propertium.Interfaces
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="cancellationTokens">The CancellationTokens used to stop waiting for the control to be found.
-        /// They will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
+        /// They will run in concurence of the <see cref="DefaultTimeout"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get(params CancellationToken[] cancellationTokens);
 
@@ -93,7 +93,7 @@ namespace Propertium.Interfaces
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// </summary>
         /// <param name="timeout">The maximum amount of time to wait for the control to be found.
-        /// This timeout will run in concurence of the <see cref="DefaultCancellationToken"/>.</param>
+        /// This timeout will run in concurence of the <see cref="DefaultTimeout"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get(TimeSpan timeout);
     }

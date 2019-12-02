@@ -23,7 +23,7 @@ namespace AUT.Facade
 
         public readonly R RemoteDriver;
 
-        private readonly CancellationToken globalCancellationToken;
+        private readonly CancellationToken DefaultTimeout;
 
         /// <summary>
         /// The nodes of INavigables forming the Graph.
@@ -36,14 +36,14 @@ namespace AUT.Facade
 
         private readonly ILog log;
 
-        public Map(R remoteDriver, ILog log, CancellationToken globalCancellationToken)
+        public Map(R remoteDriver, ILog log, CancellationToken DefaultTimeout)
         {
             DynamicNeighbors = new HashSet<DynamicNeighbor>();
             this.log = log;
             RemoteDriver = remoteDriver;
             Nodes = GetNodesByReflection<R>(Assembly.GetExecutingAssembly());
             Graph = new Graph(Nodes);
-            this.globalCancellationToken = globalCancellationToken;
+            this.DefaultTimeout = DefaultTimeout;
             AddDynamicNeighbors();
         }
 
@@ -92,7 +92,7 @@ namespace AUT.Facade
             foreach (var iNavigable in iNavigables)
             {
                 var t = iNavigable.MakeGenericType(typeof(T));
-                var instance = Activator.CreateInstance(t, this, log, globalCancellationToken) as INavigable;
+                var instance = Activator.CreateInstance(t, this, log) as INavigable;
                 navigables.Add(instance);
             }
 

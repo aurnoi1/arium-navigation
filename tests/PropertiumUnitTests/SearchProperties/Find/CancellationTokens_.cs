@@ -30,12 +30,11 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 )
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var cancellationToken = cancellationTokenSource.Token;
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationTokenSource.Token);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, 100.Milliseconds());
 
                 // Act
                 var actual = sut.Find(cancellationToken);
@@ -52,12 +51,11 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 int indexOutOfRange = webElements.Count + 1;
                 var cancellationToken = cancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationTokenSource.Token);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, 100.Milliseconds());
 
                 // Assert
                 Assert.Throws<OperationCanceledException>(() => sut.Find(cancellationToken));
@@ -72,10 +70,9 @@ namespace Propertium.UnitTests.SearchProperties.Find
             {
                 // Arrange
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
-                using var defaultCancellationTokenSource = new CancellationTokenSource(100.Milliseconds());
                 var cancellationToken = cancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationTokenSource.Token);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, 100.Milliseconds());
 
                 // Act
                 var actual = sut.Find(cancellationToken);
@@ -100,13 +97,11 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 )
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
-                var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var cancellationToken = cancellationTokenSource.Token;
                 var expected = webElements.ElementAt(index);
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, index, 150.Milliseconds());
 
                 // Act
                 var actual = sut.Find(cancellationToken);
@@ -123,13 +118,11 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
-                var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 int indexOutOfRange = webElements.Count + 1;
                 var cancellationToken = cancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, indexOutOfRange, 150.Milliseconds());
 
                 // Assert
                 Assert.Throws<OperationCanceledException>(() => sut.Find(cancellationToken));
@@ -143,12 +136,10 @@ namespace Propertium.UnitTests.SearchProperties.Find
                 string value)
             {
                 // Arrange
-                using var defaultCancellationTokenSource = new CancellationTokenSource(150.Milliseconds());
-                var defaultCancellationToken = defaultCancellationTokenSource.Token;
                 using var cancellationTokenSource = new CancellationTokenSource(50.Milliseconds());
                 var cancellationToken = cancellationTokenSource.Token;
                 Mock.Get(webDriver).Setup(x => x.FindElements(locator, value)).Returns(webElements);
-                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, defaultCancellationToken);
+                var sut = new SearchProperty<IWebElement>(locator, value, webDriver, 150.Milliseconds());
 
                 // Act
                 var actual = sut.Find(cancellationToken);

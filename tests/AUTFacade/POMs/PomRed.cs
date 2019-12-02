@@ -14,7 +14,7 @@ namespace AUT.Facade.POMs
 {
     public class PomRed<R> : PomBase<R> where R : IHasSessionId, IFindsByFluentSelector<IWebElement>
     {
-        public PomRed(Map<R> map, ILog log, CancellationToken globalCancellationToken) : base(map, log, globalCancellationToken)
+        public PomRed(Map<R> map, ILog log) : base(map, log)
         {
         }
 
@@ -27,7 +27,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "TitleRed",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
@@ -36,7 +36,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "BtnBack",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the yellow page.
@@ -45,7 +45,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "BtnOpenYellowView",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         #endregion Controls
 
