@@ -44,6 +44,14 @@ namespace Arium.Interfaces
 
         /// <summary>
         /// Executes the action passed in parameter on the last Navigable.
+        /// GlobalCancellationToken will be used to interrupt the task as soon as possible.
+        /// </summary>
+        /// <param name="action">The Action to execute.</param>m>
+        /// <returns>This Browser.</returns>
+        IBrowser Do(Action<CancellationToken> action);
+
+        /// <summary>
+        /// Executes the action passed in parameter on the last Navigable.
         /// </summary>
         /// <param name="action">The Action to execute.</param>
         /// <param name="cancellationToken">A CancellationToken to interrupt the task as soon as possible,
@@ -58,6 +66,14 @@ namespace Arium.Interfaces
         /// <param name="timeout">A timeout to interrupt the task as soon as possible,
         /// in concurrence of GlobalCancellationToken.</param>
         IBrowser Do(Action<CancellationToken> action, TimeSpan timeout);
+
+        /// <summary>
+        /// Executes the Function passed in parameter on the last Navigable.
+        /// GlobalCancellationToken will be used to interrupt the task as soon as possible.
+        /// </summary>
+        /// <param name="function">The Function to execute.</param>
+        /// <returns>This Browser.</returns>
+        public IBrowser Do<T>(Func<CancellationToken, INavigable> function) where T : INavigable;
 
         /// <summary>
         /// Executes the Function passed in parameter on the last Navigable.

@@ -1,7 +1,5 @@
 using Arium.Interfaces;
 using Arium.UnitTests.DataAttributes;
-using AutoFixture;
-using AutoFixture.AutoMoq;
 using FluentAssertions;
 using Moq;
 using System;
@@ -48,7 +46,7 @@ namespace Arium.UnitTests.BrowserTests.Do
                 // Act
                 Action act = () => browser.Do((globalCancellationToken) =>
                 {
-                    while(!globalCancellationToken.IsCancellationRequested)
+                    while (!globalCancellationToken.IsCancellationRequested)
                     {
                         Thread.Sleep(400);
                     }
