@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using Xunit;
 
-namespace Arium.UnitTests.BrowserTests.Do
+namespace Arium.UnitTests.BrowserTests.Do_T
 {
     public class Func_Cancelable_With_GlobalCancellationToken
     {
