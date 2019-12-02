@@ -33,6 +33,15 @@ namespace Propertium.Interfaces
         IFindsByFluentSelector<W> WebDriver { get; }
 
         /// <summary>
+        /// Search immediately the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
+        /// The <see cref="DefaultCancellationToken"/> has no effect on this task.
+        /// </summary>
+        /// <returns>The matching WebElement.</returns>
+        /// <exception cref="WebDriverException">Thrown when no element is found.</exception>
+        /// <remarks>This is the default behavior of <see cref="IFindsByFluentSelector.FindElement(string, string)"/>.</remarks>
+        W FindNow();
+
+        /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// The <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
@@ -57,6 +66,13 @@ namespace Propertium.Interfaces
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="TimeoutException">Thrown when any timeout is reached before WebElement is found.</exception>
         W Find(TimeSpan timeout);
+
+        /// <summary>
+        /// Get immediately the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
+        /// The <see cref="DefaultCancellationToken"/> has no effect on this task.
+        /// </summary>
+        /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
+        W GetNow();
 
         /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
