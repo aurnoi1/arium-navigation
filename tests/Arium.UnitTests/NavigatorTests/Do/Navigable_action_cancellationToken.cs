@@ -29,13 +29,13 @@ namespace Arium.UnitTests.NavigatorTests.Do
             }
 
             [Theory, AutoMoqHealthy]
-            public void When_Invoke_A_Task_Of_600_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
+            public void When_Invoke_A_Task_Of_400_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
             {
                 // Arrange
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
 
                 // Act
-                Action act = () => navigator.Do(navigator.Map.Nodes.First(), (cancellationToken) => Thread.Sleep(600), globalCTS.Token);
+                Action act = () => navigator.Do(navigator.Map.Nodes.First(), (cancellationToken) => Thread.Sleep(400), globalCTS.Token);
 
                 // Assert
                 act.Should().Throw<OperationCanceledException>();
@@ -47,7 +47,7 @@ namespace Arium.UnitTests.NavigatorTests.Do
         public class Given_The_Expected_Returned_Navigable_Does_Not_Exist
         {
             [Theory, AutoMoqHealthy]
-            public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
+            public void When_Invoke_A_Task_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
             {
                 // Arrange
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
@@ -65,7 +65,7 @@ namespace Arium.UnitTests.NavigatorTests.Do
         public class Given_The_Expected_Returned_Navigable_Does_Exist
         {
             [Theory, AutoMoqHealthy]
-            public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Before_Cancellation(INavigator navigator)
+            public void When_Invoke_A_Task_Then_Should_Returns_Before_Cancellation(INavigator navigator)
             {
                 // Arrange
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));

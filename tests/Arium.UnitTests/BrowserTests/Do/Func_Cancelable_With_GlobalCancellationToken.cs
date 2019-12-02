@@ -33,7 +33,7 @@ namespace Arium.UnitTests.BrowserTests.Do
             }
 
             [Theory, AutoMoqHealthy]
-            public void When_Invoke_A_Task_Of_600_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
+            public void When_Invoke_A_Task_Of_400_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
             {
                 // Arrange
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
@@ -43,7 +43,7 @@ namespace Arium.UnitTests.BrowserTests.Do
                 // Act
                 Action act = () => browser.Do<INavigable>((globalCancellationToken) =>
                 {
-                    Thread.Sleep(600);
+                    Thread.Sleep(400);
                     return navigator.Log.Last;
                 });
 
