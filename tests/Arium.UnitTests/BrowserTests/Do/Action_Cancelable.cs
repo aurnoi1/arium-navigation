@@ -9,9 +9,9 @@ using System.Linq;
 using System.Threading;
 using Xunit;
 
-namespace Arium.UnitTests.NavigatorTests.Do
+namespace Arium.UnitTests.BrowserTests.Do
 {
-    public class Navigable_action_cancellationToken
+    public class Action_Cancelable
     {
         public class Given_A_CancellationTokenSource_Of_200_ms
         {
@@ -19,10 +19,19 @@ namespace Arium.UnitTests.NavigatorTests.Do
             public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Before_Cancellation(INavigator navigator)
             {
                 // Arrange
+                Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
+                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
 
                 // Act
-                navigator.Do(navigator.Map.Nodes.First(), (ct) => Thread.Sleep(100), globalCTS.Token);
+                browser.Do((globalCancellationToken) =>
+                {
+                    while (!globalCancellationToken.IsCancellationRequested)
+                    {
+                        Thread.Sleep(100);
+                        break; //break before cancellation
+                    }
+                });
 
                 // Assert
                 globalCTS.IsCancellationRequested.Should().BeFalse();
@@ -32,10 +41,18 @@ namespace Arium.UnitTests.NavigatorTests.Do
             public void When_Invoke_A_Task_Of_600_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
             {
                 // Arrange
+                Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
+                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
 
                 // Act
-                Action act = () => navigator.Do(navigator.Map.Nodes.First(), (ct) => Thread.Sleep(600), globalCTS.Token);
+                Action act = () => browser.Do((globalCancellationToken) =>
+                {
+                    while(!globalCancellationToken.IsCancellationRequested)
+                    {
+                        Thread.Sleep(600);
+                    }
+                });
 
                 // Assert
                 act.Should().Throw<OperationCanceledException>();
