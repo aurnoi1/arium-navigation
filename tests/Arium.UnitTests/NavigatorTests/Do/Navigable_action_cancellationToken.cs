@@ -22,7 +22,7 @@ namespace Arium.UnitTests.NavigatorTests.Do
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
 
                 // Act
-                navigator.Do(navigator.Map.Nodes.First(), (ct) => Thread.Sleep(100), globalCTS.Token);
+                navigator.Do(navigator.Map.Nodes.First(), (cancellationToken) => Thread.Sleep(100), globalCTS.Token);
 
                 // Assert
                 globalCTS.IsCancellationRequested.Should().BeFalse();
@@ -35,11 +35,47 @@ namespace Arium.UnitTests.NavigatorTests.Do
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
 
                 // Act
-                Action act = () => navigator.Do(navigator.Map.Nodes.First(), (ct) => Thread.Sleep(600), globalCTS.Token);
+                Action act = () => navigator.Do(navigator.Map.Nodes.First(), (cancellationToken) => Thread.Sleep(600), globalCTS.Token);
 
                 // Assert
                 act.Should().Throw<OperationCanceledException>();
                 globalCTS.IsCancellationRequested.Should().BeTrue();
+            }
+        }
+
+
+        public class Given_The_Expected_Returned_Navigable_Does_Not_Exist
+        {
+            [Theory, AutoMoqHealthy]
+            public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
+            {
+                // Arrange
+                using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
+                Mock.Get(navigator.Map.Nodes.First()).Setup(x => x.PublishStatus().Exist.Value).Returns(false);
+
+                // Act
+                Action act = () => navigator.Do(navigator.Map.Nodes.First(), (cancellationToken) => { }, globalCTS.Token);
+
+                // Assert
+                act.Should().Throw<OperationCanceledException>();
+                globalCTS.IsCancellationRequested.Should().BeTrue();
+            }
+        }
+
+        public class Given_The_Expected_Returned_Navigable_Does_Exist
+        {
+            [Theory, AutoMoqHealthy]
+            public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Before_Cancellation(INavigator navigator)
+            {
+                // Arrange
+                using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
+                Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(true);
+
+                // Act
+                navigator.Do(navigator.Map.Nodes.First(), (cancellationToken) => { }, globalCTS.Token);
+
+                // Assert
+                globalCTS.IsCancellationRequested.Should().BeFalse();
             }
         }
     }

@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Arium.UnitTests.BrowserTests.Do
 {
-    public class Func_GlobalCancellationToken
+    public class Func_Cancelable_With_GlobalCancellationToken
     {
         public class Given_A_CancellationTokenSource_Of_200_ms
         {
@@ -22,7 +22,7 @@ namespace Arium.UnitTests.BrowserTests.Do
                 var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
 
                 // Act
-                browser.Do<INavigable>(() =>
+                browser.Do<INavigable>((globalCancellationToken) =>
                 {
                     Thread.Sleep(100);
                     return navigator.Log.Last;
@@ -41,7 +41,7 @@ namespace Arium.UnitTests.BrowserTests.Do
                 var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
 
                 // Act
-                Action act = () => browser.Do<INavigable>(() =>
+                Action act = () => browser.Do<INavigable>((globalCancellationToken) =>
                 {
                     Thread.Sleep(600);
                     return navigator.Log.Last;

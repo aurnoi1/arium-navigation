@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Arium.UnitTests.BrowserTests.Do
 {
-    public class Action_GlobalCancellationToken
+    public class Action_Uncancelable_With_GlobalCancellationToken
     {
         public class Given_A_CancellationTokenSource_Of_200_ms
         {

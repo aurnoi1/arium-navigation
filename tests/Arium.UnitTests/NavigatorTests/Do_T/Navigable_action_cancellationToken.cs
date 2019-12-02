@@ -33,7 +33,7 @@ namespace Arium.UnitTests.NavigatorTests.Do_T
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
 
                 // Act
-                navigator.Do<INavigable>(map.Nodes.First(), (ct) =>
+                navigator.Do<INavigable>(map.Nodes.First(), (cancellationToken) =>
                 {
                     Thread.Sleep(100);
                     return map.Nodes.First();
@@ -61,7 +61,7 @@ namespace Arium.UnitTests.NavigatorTests.Do_T
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
 
                 // Act
-                Action act = () => navigator.Do<INavigable>(map.Nodes.First(), (ct) =>
+                Action act = () => navigator.Do<INavigable>(map.Nodes.First(), (cancellationToken) =>
                 {
                     Thread.Sleep(600);
                     return map.Nodes.First();
@@ -83,7 +83,7 @@ namespace Arium.UnitTests.NavigatorTests.Do_T
                 Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(false);
 
                 // Act
-                Action act = () => navigator.Do<INavigable>(navigator.Map.Nodes.First(), (ct) =>
+                Action act = () => navigator.Do<INavigable>(navigator.Map.Nodes.First(), (cancellationToken) =>
                 {
                     return navigator.Map.Nodes.Last();
                 }, globalCTS.Token);
@@ -104,7 +104,7 @@ namespace Arium.UnitTests.NavigatorTests.Do_T
                 Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(true);
 
                 // Act
-                navigator.Do<INavigable>(navigator.Map.Nodes.First(), (ct) =>
+                navigator.Do<INavigable>(navigator.Map.Nodes.First(), (cancellationToken) =>
                 {
                     return navigator.Map.Nodes.Last();
                 }, globalCTS.Token);

@@ -1,7 +1,5 @@
 using Arium.Interfaces;
 using Arium.UnitTests.DataAttributes;
-using AutoFixture;
-using AutoFixture.AutoMoq;
 using FluentAssertions;
 using Moq;
 using System;
@@ -11,7 +9,7 @@ using Xunit;
 
 namespace Arium.UnitTests.BrowserTests.Do
 {
-    public class Action_Cancelable
+    public class Func_Uncancelable_With_GlobalCancellationToken
     {
         public class Given_A_CancellationTokenSource_Of_200_ms
         {
@@ -24,13 +22,10 @@ namespace Arium.UnitTests.BrowserTests.Do
                 var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
 
                 // Act
-                browser.Do((globalCancellationToken) =>
+                browser.Do<INavigable>(() =>
                 {
-                    while (!globalCancellationToken.IsCancellationRequested)
-                    {
-                        Thread.Sleep(100);
-                        break; //break before cancellation
-                    }
+                    Thread.Sleep(100);
+                    return navigator.Log.Last;
                 });
 
                 // Assert
@@ -46,12 +41,10 @@ namespace Arium.UnitTests.BrowserTests.Do
                 var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
 
                 // Act
-                Action act = () => browser.Do((globalCancellationToken) =>
+                Action act = () => browser.Do<INavigable>(() =>
                 {
-                    while(!globalCancellationToken.IsCancellationRequested)
-                    {
-                        Thread.Sleep(600);
-                    }
+                    Thread.Sleep(600);
+                    return navigator.Log.Last;
                 });
 
                 // Assert
