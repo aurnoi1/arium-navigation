@@ -233,7 +233,6 @@ namespace Arium
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                var g = navigable.PublishStatus().Ready.Value;
                 if (navigable.PublishStatus().Ready.Value)
                 {
                     return;

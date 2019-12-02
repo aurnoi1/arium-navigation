@@ -1,4 +1,5 @@
 using Arium.Interfaces;
+using Arium.UnitTests.DataAttributes;
 using AutoFixture;
 using AutoFixture.AutoMoq;
 using FluentAssertions;
@@ -69,6 +70,47 @@ namespace Arium.UnitTests.NavigatorTests.Do_T
                 // Assert
                 act.Should().Throw<OperationCanceledException>();
                 globalCTS.IsCancellationRequested.Should().BeTrue();
+            }
+        }
+
+        public class Given_The_Expected_Returned_Navigable_Does_Not_Exist
+        {
+            [Theory, AutoMoqHealthy]
+            public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Throws_OperationCanceledException(INavigator navigator)
+            {
+                // Arrange
+                using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
+                Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(false);
+
+                // Act
+                Action act = () => navigator.Do<INavigable>(navigator.Map.Nodes.First(), (ct) =>
+                {
+                    return navigator.Map.Nodes.Last();
+                }, globalCTS.Token);
+
+                // Assert
+                act.Should().Throw<OperationCanceledException>();
+                globalCTS.IsCancellationRequested.Should().BeTrue();
+            }
+        }
+
+        public class Given_The_Expected_Returned_Navigable_Does_Exist
+        {
+            [Theory, AutoMoqHealthy]
+            public void When_Invoke_A_Task_Of_100_ms_Then_Should_Returns_Before_Cancellation(INavigator navigator)
+            {
+                // Arrange
+                using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
+                Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(true);
+
+                // Act
+                navigator.Do<INavigable>(navigator.Map.Nodes.First(), (ct) =>
+                {
+                    return navigator.Map.Nodes.Last();
+                }, globalCTS.Token);
+
+                // Assert
+                globalCTS.IsCancellationRequested.Should().BeFalse();
             }
         }
     }
