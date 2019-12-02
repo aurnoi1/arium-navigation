@@ -14,7 +14,7 @@ using Xunit;
 
 namespace Arium.UITests
 {
-    public class UnitTest1 : IDisposable
+    public class Examples : IDisposable
     {
         public Uri Uri { get => new Uri("http://localhost:4723/wd/hub"); }
 
@@ -51,7 +51,7 @@ namespace Arium.UITests
 
         private AppiumLocalService service;
 
-        public UnitTest1()
+        public Examples()
         {
             //StartAppiumService();
         }
