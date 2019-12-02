@@ -4,9 +4,9 @@
       <LangVersion>8</LangVersion>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
-      <Description>System to automate navigation mainly through user interfaces.</Description>
+      <Description>Automate navigation through user interfaces.</Description>
       <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
-      <PackageTags>Arium Test Automation</PackageTags>
+      <PackageTags>Arium Test Automation UITest UITesting</PackageTags>
       <PackageLicenseUrl></PackageLicenseUrl>
       <Version>1.0.0-beta0001</Version>
       <Authors>Aurelien Noisette</Authors>

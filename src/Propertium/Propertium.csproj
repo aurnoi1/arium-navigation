@@ -7,7 +7,7 @@
         <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
         <Description>Get WebElement from SearchProperty.</Description>
         <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
-        <PackageTags>Arium Test Automation Appium Propertium</PackageTags>
+        <PackageTags>Arium Test Automation Appium Propertium UITest UITesting</PackageTags>
         <PackageLicenseUrl></PackageLicenseUrl>
         <Version>1.0.0-beta0001</Version>
         <Authors>Aurelien Noisette</Authors>

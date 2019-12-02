@@ -1,8 +1,8 @@
-using Arium;
 using AUT.Facade;
 using AUT.Facade.POMs;
 using FluentAssertions;
 using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Appium.Windows;
 using System;
@@ -12,7 +12,7 @@ using System.Threading;
 using TimeoutEx;
 using Xunit;
 
-namespace NavBrowser.Tests
+namespace Arium.UITests
 {
     public class UnitTest1 : IDisposable
     {
@@ -24,8 +24,8 @@ namespace NavBrowser.Tests
             {
                 string appFullPath = GetTargetFullPath();
                 AppiumOptions appiumOptions = new AppiumOptions();
-                appiumOptions.AddAdditionalCapability("app", appFullPath);
-                appiumOptions.AddAdditionalCapability("deviceName", "WindowsPC");
+                appiumOptions.AddAdditionalCapability(MobileCapabilityType.App, appFullPath);
+                appiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, "WindowsPC");
                 return appiumOptions;
             }
         }

@@ -70,6 +70,18 @@ namespace Propertium
         #region Find Methods
 
         /// <summary>
+        /// Search immediately the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
+        /// The <see cref="DefaultCancellationToken"/> has no effect on this task.
+        /// </summary>
+        /// <returns>The matching WebElement.</returns>
+        /// <exception cref="WebDriverException">Thrown when no element is found.</exception>
+        /// <remarks>This is the default behavior of <see cref="IFindsByFluentSelector.FindElement(string, string)"/>.</remarks>
+        public W FindNow()
+        {
+            return WebDriver.FindElement(Locator, Value);
+        }
+
+        /// <summary>
         /// Search the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// The <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
@@ -119,20 +131,23 @@ namespace Propertium
         #region Get Methods
 
         /// <summary>
+        /// Get immediately the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
+        /// The <see cref="DefaultCancellationToken"/> has no effect on this task.
+        /// </summary>
+        /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
+        public W GetNow()
+        {
+            return FindElement();
+        }
+
+        /// <summary>
         /// Get the WebElement of type <typeparamref name="W"/> matching the SearchProperty.
         /// <see cref="DefaultCancellationToken"/> will be used to cancel the task.
         /// </summary>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         public W Get()
         {
-            if (DefaultCancellationToken == null || DefaultCancellationToken == CancellationToken.None)
-            {
-                return FindElement();
-            }
-            else
-            {
-                return Get(DefaultCancellationToken);
-            }
+            return Get(DefaultCancellationToken);
         }
 
         /// <summary>
