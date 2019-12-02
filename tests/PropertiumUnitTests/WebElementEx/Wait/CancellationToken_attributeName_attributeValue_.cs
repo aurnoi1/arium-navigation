@@ -18,7 +18,7 @@ namespace Propertium.UnitTests.WebElementEx.Wait
             string attributeValue)
         {
             // Arrange
-            using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
+            using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(100));
             var cancellationToken = cancellationTokenSource.Token;
             Mock.Get(sut).Setup(x => x.GetAttribute(attributeName)).Returns(attributeValue);
 
@@ -56,7 +56,7 @@ namespace Propertium.UnitTests.WebElementEx.Wait
             string attributeValue)
         {
             // Arrange
-            using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(100));
+            using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(150));
             var cancellationToken = cancellationTokenSource.Token;
             Mock.Get(sut).Setup(x => x.GetAttribute(attributeName)).Returns(attributeValue);
 

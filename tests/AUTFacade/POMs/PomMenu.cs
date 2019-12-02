@@ -15,7 +15,7 @@ namespace AUT.Facade.POMs
     public class PomMenu<R> : PomBase<R> where R : IHasSessionId, IFindsByFluentSelector<IWebElement>
 
     {
-        public PomMenu(Map<R> map, ILog log, CancellationToken globalCancellationToken) : base(map, log, globalCancellationToken)
+        public PomMenu(Map<R> map, ILog log) : base(map, log)
         {
         }
 
@@ -28,7 +28,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "NotImplemented",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find the tile of this page.
@@ -37,7 +37,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "TitleMenu",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the BlueView.
@@ -46,7 +46,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "BtnOpenBlueView",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
@@ -55,7 +55,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "BtnOpenRedView",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the RedView.
@@ -64,7 +64,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "BtnOpenYellowView",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control where text can be enter.
@@ -73,7 +73,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "TxtBoxImportantMessage",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         #endregion Controls
 

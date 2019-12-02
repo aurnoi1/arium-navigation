@@ -14,7 +14,7 @@ namespace AUT.Facade.POMs
 {
     public class PomYellow<R> : PomBase<R> where R : IHasSessionId, IFindsByFluentSelector<IWebElement>
     {
-        public PomYellow(Map<R> map, ILog log, CancellationToken globalCancellationToken) : base(map, log, globalCancellationToken)
+        public PomYellow(Map<R> map, ILog log) : base(map, log)
         {
         }
 
@@ -27,7 +27,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility, 
             "TitleYellow", 
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
@@ -36,7 +36,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility, 
             "BtnBack", 
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         /// <summary>
         /// WDSearchProperties to find a control to open the previous page.
@@ -45,7 +45,7 @@ namespace AUT.Facade.POMs
             MobileSelector.Accessibility,
             "BtnOpenMenuView",
             map.RemoteDriver,
-            globalCancellationToken);
+            DefaultTimeout);
 
         #endregion Controls
 
@@ -100,11 +100,16 @@ namespace AUT.Facade.POMs
         /// Open the Menu page by clicking on UIBtnOpenMenuPage.
         /// </summary>
         /// <param name="timeout">The timeout to interrupt the task as soon as possible
-        /// in concurrence of globalCancellationToken.</param>
+        /// in concurrence of DefaultTimeout.</param>
         /// <returns>The PomMenu.</returns>
         public PomMenu<R> OpenMenuByMenuBtn(TimeSpan timeout)
         {
-            using var linkedCts = LinkCancellationTokenSourceToGlobal(timeout);
+            using CancellationTokenSource localCts = new CancellationTokenSource(timeout);
+            using CancellationTokenSource defaultCts = new CancellationTokenSource(DefaultTimeout);
+            var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(
+                defaultCts.Token,
+                localCts.Token);
+
             UIBtnOpenMenuPage.Find(linkedCts.Token).Click();
             return map.PomMenu;
         }
