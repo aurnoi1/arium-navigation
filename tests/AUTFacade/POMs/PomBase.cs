@@ -16,17 +16,16 @@ namespace AUT.Facade.POMs
         protected private readonly Map<R> map;
         private readonly List<WeakReference<INavigableObserver>> observers = new List<WeakReference<INavigableObserver>>();
         protected private readonly ILog log;
-        protected private readonly CancellationToken globalCancellationToken;
+        public readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(10);
 
         private PomBase()
         {
         }
 
-        public PomBase(Map<R> map, ILog log, CancellationToken globalCancellationToken)
+        public PomBase(Map<R> map, ILog log)
         {
             this.map = map;
             this.log = log;
-            this.globalCancellationToken = globalCancellationToken;
             RegisterObserver(log);
         }
 
@@ -131,14 +130,5 @@ namespace AUT.Facade.POMs
             return new HashSet<DynamicNeighbor>();
         }
 
-        private protected CancellationTokenSource LinkCancellationTokenSourceToGlobal(TimeSpan timeout)
-        {
-            using CancellationTokenSource localCts = new CancellationTokenSource(timeout);
-            var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(
-                globalCancellationToken,
-                localCts.Token);
-
-            return linkedCts;
-        }
     }
 }

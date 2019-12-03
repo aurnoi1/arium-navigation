@@ -3,7 +3,6 @@ using AUT.Facade.POMs;
 using FluentAssertions;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Enums;
-using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.IO;
@@ -14,7 +13,8 @@ using Xunit;
 
 namespace Arium.UITests
 {
-    public class UnitTest1 : IDisposable
+    [Collection("UITests")]
+    public class Examples
     {
         public Uri Uri { get => new Uri("http://localhost:4723/wd/hub"); }
 
@@ -49,20 +49,13 @@ namespace Arium.UITests
             return path;
         }
 
-        private AppiumLocalService service;
-
-        public UnitTest1()
-        {
-            //StartAppiumService();
-        }
-
         [Fact]
         public void Test1()
         {
             using var globalCancellationTokenSource = new CancellationTokenSource(10.m());
             var globalCancellationToken = globalCancellationTokenSource.Token;
             var log = new Log();
-            var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log, globalCancellationToken);
+            var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
             var nav = new Navigator(map, log);
             var browser = new Browser(map, log, nav, globalCancellationToken);
             browser.Navigator.WaitForExist(map.PomMenu, globalCancellationToken);
@@ -80,20 +73,14 @@ namespace Arium.UITests
             map.RemoteDriver.Close();
         }
 
-        private void StartAppiumService()
-        {
-            service = AppiumLocalService.BuildDefaultService();
-            service.Start();
-        }
-
         [Fact]
         public void FullExample()
         {
             // Set the GlobalCancellationToken used for the time of the Navigation session.
-            using var globalCancellationTokenSource = new CancellationTokenSource(1.m());
+            using var globalCancellationTokenSource = new CancellationTokenSource(30.s());
             var globalCancellationToken = globalCancellationTokenSource.Token;
             var log = new Log();
-            var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log, globalCancellationToken);
+            var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
             var navigator = new Navigator(map, log);
             var browser = new Browser(map, log, navigator, globalCancellationToken);
             browser.WaitForExist(map.PomMenu); // Use GlobalCancellationToken.
@@ -129,11 +116,6 @@ namespace Arium.UITests
             browser.Log.Historic.First().Should().Be(map.PomMenu);
             browser.Log.Historic.Last().Should().Be(map.PomRed);
             map.RemoteDriver.Close();
-        }
-
-        public void Dispose()
-        {
-            //service.Dispose();
         }
     }
 }
