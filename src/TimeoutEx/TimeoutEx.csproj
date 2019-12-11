@@ -8,7 +8,7 @@
     <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
-    <PackageTags>Test Automation Timeout TimeSpan</PackageTags>
+    <PackageTags>Test-Automation Timeout TimeSpan TimeoutEx</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
