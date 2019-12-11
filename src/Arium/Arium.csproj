@@ -5,6 +5,8 @@
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
       <Description>Automate navigation through user interfaces.</Description>
+      <Summary>Automate navigation through user interfaces.</Summary>
+      <Title>Arium</Title>
       <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
       <PackageTags>Arium Test-automation Appium UI-Test UI-Testing</PackageTags>
       <PackageLicenseUrl></PackageLicenseUrl>
@@ -12,7 +14,7 @@
       <Authors>Aurelien Noisette</Authors>
       <Company>Aurelien Noisette</Company>
       <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-      <PackageReleaseNotes></PackageReleaseNotes>
+      <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
    </PropertyGroup>
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
    </PropertyGroup>

@@ -1,16 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Version>1.0.0-beta0001</Version>
     <Authors>Aurelien Noisette</Authors>
+    <Company>Aurelien Noisette</Company>
     <Description>Provides extension methods to create TimeSpan as timeout expressed in the International System.</Description>
+    <Summary>Provides extension methods to create TimeSpan as timeout expressed in the International System.</Summary>
+    <Title>TimeoutEx</Title>
     <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
     <PackageTags>Test-Automation Timeout TimeSpan TimeoutEx</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

@@ -6,14 +6,15 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
         <Description>Get WebElement from SearchProperty.</Description>
+        <Summary>Get WebElement from SearchProperty.</Summary>
+        <Title>Propertium</Title>
         <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
         <PackageTags>Arium Test-automation Appium Propertium UI-Test UI-Testing</PackageTags>
-        <PackageLicenseUrl></PackageLicenseUrl>
         <Version>1.0.0-beta0001</Version>
         <Authors>Aurelien Noisette</Authors>
         <Company>Aurelien Noisette</Company>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
