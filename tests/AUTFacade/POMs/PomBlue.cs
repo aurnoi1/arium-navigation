@@ -57,7 +57,7 @@ namespace AUT.Facade.POMs
         /// <returns>The State.</returns>
         public override IState<T> PublishState<T>(StatesNames stateName)
         {
-            bool isDisplayed = (UILblTitle.GetNow() != null);
+            bool isDisplayed = UILblTitle.Exist();
             var genericIsDisplayed = (T)Convert.ChangeType(isDisplayed, typeof(T));
             State<T> state = stateName switch
             {
