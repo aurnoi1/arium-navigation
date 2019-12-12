@@ -191,6 +191,15 @@ namespace Propertium
 
         #endregion Get Methods
 
+        /// <summary>
+        /// Check if the WebElement exists.
+        /// </summary>
+        /// <returns><c>true</c> if the WebElement exists. Otherwise <c>false</c>.</returns>
+        public bool Exist()
+        {
+            return GetNow() != null;
+        }
+
         #region Private
 
         private W Get(CancellationToken linkedCancellationTokens)
