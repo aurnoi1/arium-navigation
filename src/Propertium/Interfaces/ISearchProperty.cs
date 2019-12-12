@@ -96,5 +96,11 @@ namespace Propertium.Interfaces
         /// This timeout will run in concurence of the <see cref="DefaultTimeout"/>.</param>
         /// <returns>The matching WebElement, otherwise <c>null</c>.</returns>
         W Get(TimeSpan timeout);
+
+        /// <summary>
+        /// Check if the WebElement exists.
+        /// </summary>
+        /// <returns><c>true</c> if the WebElement exists. Otherwise <c>false</c>.</returns>
+        bool Exist();
     }
 }
