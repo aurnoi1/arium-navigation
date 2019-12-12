@@ -155,7 +155,7 @@ namespace Arium
         /// <returns>This Browser.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        public IBrowser GoTo(INavigable destination) => GoTo(destination, GlobalCancellationToken);
+        public IBrowser Goto(INavigable destination) => Goto(destination, GlobalCancellationToken);
 
         /// <summary>
         /// Go to the destination from the last Navigable, using the shortest way.
@@ -166,12 +166,12 @@ namespace Arium
         /// <returns>This Browser.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        public IBrowser GoTo(
+        public IBrowser Goto(
         INavigable destination,
         TimeSpan timeout)
         {
             using var cancellationTokenSource = new CancellationTokenSource(timeout);
-            return GoTo(destination, cancellationTokenSource.Token);
+            return Goto(destination, cancellationTokenSource.Token);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Arium
         /// <returns>This Browser.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        public IBrowser GoTo(
+        public IBrowser Goto(
                 INavigable destination,
                 CancellationToken cancellationToken)
         {
@@ -193,7 +193,7 @@ namespace Arium
 
             linkedCts.Token.ThrowIfCancellationRequested();
             var last = Log.Last;
-            Navigator.GoTo(last, destination, linkedCts.Token);
+            Navigator.Goto(last, destination, linkedCts.Token);
             return this;
         }
 
