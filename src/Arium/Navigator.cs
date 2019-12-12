@@ -17,7 +17,7 @@ namespace Arium
         #region Fields
 
         /// <summary>
-        /// A temporary field to backup the final destination in GoTo() and used in Resolve().
+        /// A temporary field to backup the final destination in Goto() and used in Resolve().
         /// </summary>
         private INavigable gotoDestination;
 
