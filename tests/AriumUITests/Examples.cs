@@ -59,15 +59,15 @@ namespace Arium.UITests
             var nav = new Navigator(map, log);
             var browser = new Browser(map, log, nav, globalCancellationToken);
             browser.Navigator.WaitForExist(map.PomMenu, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomMenu, map.PomYellow, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomYellow, map.PomRed, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomRed, map.PomBlue, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomBlue, map.PomYellow, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomYellow, map.PomRed, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomRed, map.PomYellow, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomYellow, map.PomYellow, globalCancellationToken);
-            browser.Navigator.GoTo(browser.Log.Last, map.PomMenu, globalCancellationToken);
-            browser.Navigator.GoTo(map.PomMenu, map.PomYellow, globalCancellationToken);
+            browser.Navigator.Goto(map.PomMenu, map.PomYellow, globalCancellationToken);
+            browser.Navigator.Goto(map.PomYellow, map.PomRed, globalCancellationToken);
+            browser.Navigator.Goto(map.PomRed, map.PomBlue, globalCancellationToken);
+            browser.Navigator.Goto(map.PomBlue, map.PomYellow, globalCancellationToken);
+            browser.Navigator.Goto(map.PomYellow, map.PomRed, globalCancellationToken);
+            browser.Navigator.Goto(map.PomRed, map.PomYellow, globalCancellationToken);
+            browser.Navigator.Goto(map.PomYellow, map.PomYellow, globalCancellationToken);
+            browser.Navigator.Goto(browser.Log.Last, map.PomMenu, globalCancellationToken);
+            browser.Navigator.Goto(map.PomMenu, map.PomYellow, globalCancellationToken);
             browser.Navigator.Do<PomMenu<WindowsDriver<WindowsElement>>>(map.PomYellow, (x) => map.PomYellow.OpenMenuByMenuBtn(TimeSpan.FromSeconds(10)), globalCancellationToken);
             browser.Navigator.Back(globalCancellationToken);
             map.RemoteDriver.Close();
@@ -86,16 +86,16 @@ namespace Arium.UITests
             browser.WaitForExist(map.PomMenu); // Use GlobalCancellationToken.
             browser.WaitForReady(map.PomMenu, 3.s()); // Use timeout in concurrence of GlobalCancellationToken.
             browser
-                .GoTo(map.PomYellow)
+                .Goto(map.PomYellow)
                 .Do<PomMenu<WindowsDriver<WindowsElement>>>(() =>
                 {
                     // Add a timeout in concurence of GlobalCancellationToken
                     // Since the same token was injected to Map and Browser.
                     return map.PomYellow.OpenMenuByMenuBtn(3.s());
                 })
-                .GoTo(map.PomBlue) // Force the path to PomBlue then PomYellow...
-                .GoTo(map.PomYellow) //... to test PomYellow.ActionToOpenViewMenu().
-                .GoTo(map.PomMenu) // Since last was PomBlue, PomYellow.OpenViewMenuByMenuBtn() will be called to go to ViewMenu.
+                .Goto(map.PomBlue) // Force the path to PomBlue then PomYellow...
+                .Goto(map.PomYellow) //... to test PomYellow.ActionToOpenViewMenu().
+                .Goto(map.PomMenu) // Since last was PomBlue, PomYellow.OpenViewMenuByMenuBtn() will be called to go to ViewMenu.
                 .Do(() =>
                 {
                     map.PomMenu.EnterText("This is a test");
@@ -107,10 +107,10 @@ namespace Arium.UITests
                     // So use a specific CancellationToken if you need more precision in the action cancellation.
                     map.PomMenu.UITitle.Get(linkedTokens).Should().NotBeNull();
                 }, 3.s())
-                .GoTo(map.PomBlue, 5.s()) // Add a timeout that will run in concurrence of GlobalCancellationToken.
+                .Goto(map.PomBlue, 5.s()) // Add a timeout that will run in concurrence of GlobalCancellationToken.
                 .Back() // ViewBlue.
-                .GoTo(browser.Log.Historic.ElementAt(1)) // The second element of historic is ViewYellow.
-                .GoTo(map.PomRed);// Auto resolution of path to red via PomYellow.GetDynamicNeighbors().
+                .Goto(browser.Log.Historic.ElementAt(1)) // The second element of historic is ViewYellow.
+                .Goto(map.PomRed);// Auto resolution of path to red via PomYellow.GetDynamicNeighbors().
 
             // First page in historic was PomMenu.
             browser.Log.Historic.First().Should().Be(map.PomMenu);

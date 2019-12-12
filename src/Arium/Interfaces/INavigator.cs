@@ -53,7 +53,7 @@ namespace Arium.Interfaces
         /// <returns>The destination.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        INavigable GoTo(INavigable origin, INavigable destination, CancellationToken cancellationToken);
+        INavigable Goto(INavigable origin, INavigable destination, CancellationToken cancellationToken);
 
         /// <summary>
         /// Performs action to step to the next Navigable in the resolve path.

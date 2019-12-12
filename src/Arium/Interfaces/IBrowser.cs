@@ -116,7 +116,7 @@ namespace Arium.Interfaces
         /// <returns>This Browser.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        IBrowser GoTo(INavigable destination);
+        IBrowser Goto(INavigable destination);
 
         /// <summary>
         /// Go to the destination from the last Navigable, using the shortest way.
@@ -127,7 +127,7 @@ namespace Arium.Interfaces
         /// <returns>This Browser.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        IBrowser GoTo(INavigable destination, CancellationToken cancellationToken);
+        IBrowser Goto(INavigable destination, CancellationToken cancellationToken);
 
         /// <summary>
         /// Go to the destination from the last Navigable, using the shortest way.
@@ -138,7 +138,7 @@ namespace Arium.Interfaces
         /// <returns>This Browser.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        IBrowser GoTo(INavigable destination, TimeSpan timeout);
+        IBrowser Goto(INavigable destination, TimeSpan timeout);
 
         /// <summary>
         /// Wait until this navigable exists.
