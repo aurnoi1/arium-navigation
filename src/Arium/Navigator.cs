@@ -17,7 +17,7 @@ namespace Arium
         #region Fields
 
         /// <summary>
-        /// A temporary field to backup the final destination in GoTo() and used in Resolve().
+        /// A temporary field to backup the final destination in Goto() and used in Resolve().
         /// </summary>
         private INavigable gotoDestination;
 
@@ -140,7 +140,7 @@ namespace Arium
         /// <returns>The destination.</returns>
         /// <exception cref="UninitializedGraphException">Thrown when the Graph is unitialized.</exception>
         /// <exception cref="PathNotFoundException">Thrown when no path was found between the origin and the destination.</exception>
-        public INavigable GoTo(
+        public INavigable Goto(
             INavigable origin,
             INavigable destination,
             CancellationToken cancellationToken)
@@ -190,7 +190,7 @@ namespace Arium
         public INavigable Back(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            return GoTo(Log.Last, Log.Previous, cancellationToken);
+            return Goto(Log.Last, Log.Previous, cancellationToken);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Arium
         private void Resolve(IEnumerable<INavigable> alternatives, INavigable destination, CancellationToken cancellationToken)
         {
             var alternative = GetFirstINavigableExisting(alternatives, cancellationToken);
-            GoTo(alternative, destination, cancellationToken);
+            Goto(alternative, destination, cancellationToken);
         }
 
         private INavigable GetFirstINavigableExisting(IEnumerable<INavigable> iNavigables, CancellationToken cancellationToken)
