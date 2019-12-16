@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFrameworks>netstandard2.1;netcoreapp3.0</TargetFrameworks>
         <LangVersion>8</LangVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
@@ -12,12 +12,12 @@
         <Title>Propertium</Title>
         <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
         <PackageTags>Arium Test-automation Appium Propertium UI-Test UI-Testing</PackageTags>
-        <Version>1.0.0-beta0003</Version>
+        <Version>1.0.0-beta0004</Version>
         <Authors>Aurelien Noisette</Authors>
         <Company>Aurelien Noisette</Company>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
         <PackageReleaseNotes>Not ready for production!
-- Add xml documentation.</PackageReleaseNotes>
+- Add netcoreapp3.0 support.</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
