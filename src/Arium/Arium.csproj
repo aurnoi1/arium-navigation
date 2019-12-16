@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
    <PropertyGroup>
       <TargetFramework>netstandard2.1</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
       <LangVersion>8</LangVersion>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
@@ -10,13 +12,16 @@
       <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
       <PackageTags>Arium Test-automation Appium UI-Test UI-Testing</PackageTags>
       <PackageLicenseUrl></PackageLicenseUrl>
-      <Version>1.0.0-beta0002</Version>
+      <Version>1.0.0-beta0003</Version>
       <Authors>Aurelien Noisette</Authors>
       <Company>Aurelien Noisette</Company>
       <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
       <PackageReleaseNotes>Not ready for production!
-- Rename GoTo() to Goto().</PackageReleaseNotes>
+- Add xml documentation.
+- Fix missing Goto() renaming.</PackageReleaseNotes>
    </PropertyGroup>
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
    </PropertyGroup>
 </Project>
