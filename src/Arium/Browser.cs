@@ -5,13 +5,38 @@ using System.Threading;
 
 namespace Arium
 {
+    /// <summary>
+    /// Defines a Browser.
+    /// </summary>
     public class Browser : IBrowser
     {
+        /// <summary>
+        /// The map of Navigables.
+        /// </summary>
         public IMap Map { get; }
+
+        /// <summary>
+        /// The Navigator.
+        /// </summary>
         public INavigator Navigator { get; }
+
+        /// <summary>
+        /// The Log.
+        /// </summary>
         public ILog Log { get; }
+
+        /// <summary>
+        /// The CancellationToken set for browsing session.
+        /// </summary>
         public CancellationToken GlobalCancellationToken { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Browser"/> class.
+        /// </summary>
+        /// <param name="map">The map of Navigables.</param>
+        /// <param name="log">The Log.</param>
+        /// <param name="navigator">The Navigator.</param>
+        /// <param name="globalCancellationToken">The CancellationToken set for browsing session.</param>
         public Browser(IMap map, ILog log, INavigator navigator, CancellationToken globalCancellationToken)
         {
             Map = map;
