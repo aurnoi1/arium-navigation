@@ -8,12 +8,16 @@ using System.Threading;
 
 namespace Propertium
 {
+    /// <summary>
+    /// A SearchProperty to find a IWebElement.
+    /// </summary>
+    /// <typeparam name="W">The IWebElement type.</typeparam>
     public class SearchProperty<W> : ISearchProperty<W> where W : IWebElement
     {
         private const string timeoutExceptionMessage = "The timeout has been reached before the Element could be found.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchProperty"/> class.
+        /// Initializes a new instance of the <see cref="SearchProperty{W}"/> class.
         /// </summary>
         /// <param name="selector">The selector to use to search the WebElement.</param>
         /// <param name="value">The expected value of the WebElement selector.</param>
@@ -29,7 +33,7 @@ namespace Propertium
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchProperty"/> class.
+        /// Initializes a new instance of the <see cref="SearchProperty{W}"/> class.
         /// </summary>
         /// <param name="selector">The selector to use to search the WebElement.</param>
         /// <param name="value">The expected value of the WebElement selector.</param>
