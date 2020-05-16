@@ -40,7 +40,7 @@ namespace Arium.Interfaces
         /// <summary>
         /// Unregister the NavigableObserver.
         /// </summary>
-        /// <param name="weakObserver">The INavigableObserver.</param>
+        /// <param name="observer">The INavigableObserver.</param>
         void UnregisterObserver(INavigableObserver observer);
 
         /// <summary>
