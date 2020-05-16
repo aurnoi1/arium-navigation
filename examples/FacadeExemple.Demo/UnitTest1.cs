@@ -1,6 +1,7 @@
 using FacadeExample;
 using FacadeExample.Pages;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace FacadeExemple.Demo
@@ -11,7 +12,8 @@ namespace FacadeExemple.Demo
         public void Test1()
         {
             Map map = new Map();
-            var g = map.Nodes;
+            var pageA = map.Nodes.Where(x => x.GetType() == typeof(PageA)).SingleOrDefault();
+            Assert.Same(pageA, map.PageA);
         }
     }
 }

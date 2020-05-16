@@ -7,16 +7,21 @@ using System.Threading;
 
 namespace FacadeExample.Pages
 {
-    public class PageB : Navigable
+    public class PageB : BasePage
     {
-        /// <summary>
-        /// Gets a Dictionary of actions to go to the next Navigable.
-        /// </summary>
-        /// <returns>A Dictionary of actions to go to the next Navigable.</returns>
-        public override Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
+        public PageB(ILog log) : base(log)
         {
-            throw new NotImplementedException();
+
         }
+
+        ///// <summary>
+        ///// Gets a Dictionary of actions to go to the next Navigable.
+        ///// </summary>
+        ///// <returns>A Dictionary of actions to go to the next Navigable.</returns>
+        //public override Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
 
         /// <summary>
