@@ -7,37 +7,27 @@ using System.Threading;
 
 namespace FacadeExample.Navigables
 {
-    public class PageC : NavigablePublisher, INavigable
+    public class PageC : Navigable
     {
+        /// <summary>
+        /// Gets a Dictionary of actions to go to the next Navigable.
+        /// </summary>
+        /// <returns>A Dictionary of actions to go to the next Navigable.</returns>
         public override Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Notify observers of a specific State's value.
+        /// The function returning the Exist status.
         /// </summary>
-        /// <typeparam name="T">The State's value type.</typeparam>
-        /// <param name="stateName">The state name.</param>
-        /// <returns>The State.</returns>
-        public override IState<T> PublishState<T>(StatesNames stateName)
-        {
-            return stateName switch
-            {
-                StatesNames.Exist => (IState<T>)StateFactory.Create(this, StatesNames.Exist, true),
-                StatesNames.Ready => (IState<T>)StateFactory.Create(this, StatesNames.Ready, true),
-                _ => throw new ArgumentException("Unknown StatesNames"),
-            };
-        }
+        /// <returns>The Exists status.</returns>
+        public override Func<bool> Exist() => () => { return true; };
 
         /// <summary>
-        /// Notify observers of the current INavigable status.
+        /// The function returning the Ready status.
         /// </summary>
-        /// <returns>The published current INavigable status.</returns>
-        public override INavigableStatus PublishStatus()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <returns>The Ready status.</returns>
+        public override Func<bool> Ready() => () => { return true; };
     }
 }
