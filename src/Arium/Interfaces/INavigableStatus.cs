@@ -1,5 +1,8 @@
 ﻿namespace Arium.Interfaces
 {
+    /// <summary>
+    /// Defines an INavigableStatus.
+    /// </summary>
     public interface INavigableStatus
     {
         /// <summary>

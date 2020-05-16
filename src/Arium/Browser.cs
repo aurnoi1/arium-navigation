@@ -6,12 +6,12 @@ using System.Threading;
 namespace Arium
 {
     /// <summary>
-    /// Defines a Browser.
+    /// A Browser.
     /// </summary>
     public class Browser : IBrowser
     {
         /// <summary>
-        /// The map of Navigables.
+        /// The Map used for navigation.
         /// </summary>
         public IMap Map { get; }
 
@@ -21,7 +21,7 @@ namespace Arium
         public INavigator Navigator { get; }
 
         /// <summary>
-        /// The Log.
+        /// The Log used to register navigation.
         /// </summary>
         public ILog Log { get; }
 

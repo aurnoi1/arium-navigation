@@ -4,11 +4,29 @@ using System.Threading;
 
 namespace Arium.Interfaces
 {
+    /// <summary>
+    /// Defines a Browser.
+    /// </summary>
     public interface IBrowser
     {
+        /// <summary>
+        /// The CancellationToken set for browsing session.
+        /// </summary>
         CancellationToken GlobalCancellationToken { get; }
+
+        /// <summary>
+        /// The Log used to register navigation.
+        /// </summary>
         ILog Log { get; }
+
+        /// <summary>
+        /// The Map used for navigation.
+        /// </summary>
         IMap Map { get; }
+
+        /// <summary>
+        /// The Navigator.
+        /// </summary>
         INavigator Navigator { get; }
 
         /// <summary>

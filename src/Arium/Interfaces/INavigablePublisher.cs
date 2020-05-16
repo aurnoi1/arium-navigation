@@ -44,7 +44,8 @@ namespace Arium.Interfaces
         /// <summary>
         /// Notify all observers of the current state.
         /// </summary>
-        /// <param name="state">The State.</param>
+        /// <typeparam name="T">The state's value type.</typeparam>
+        /// <param name="state">The requested State.</param>
         void NotifyObservers<T>(IState<T> state);
     }
 }
