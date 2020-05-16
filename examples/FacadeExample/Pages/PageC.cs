@@ -3,12 +3,11 @@ using Arium.Enums;
 using Arium.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
-namespace FacadeExample.Navigables
+namespace FacadeExample.Pages
 {
-    public class PageA : Navigable
+    public class PageC : Navigable
     {
         /// <summary>
         /// Gets a Dictionary of actions to go to the next Navigable.
@@ -18,7 +17,6 @@ namespace FacadeExample.Navigables
         {
             throw new NotImplementedException();
         }
-
 
         /// <summary>
         /// The function returning the Exist status.

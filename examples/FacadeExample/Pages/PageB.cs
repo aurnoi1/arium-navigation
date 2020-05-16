@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace FacadeExample.Navigables
+namespace FacadeExample.Pages
 {
-    public class PageC : Navigable
+    public class PageB : Navigable
     {
         /// <summary>
         /// Gets a Dictionary of actions to go to the next Navigable.
@@ -17,6 +17,7 @@ namespace FacadeExample.Navigables
         {
             throw new NotImplementedException();
         }
+
 
         /// <summary>
         /// The function returning the Exist status.

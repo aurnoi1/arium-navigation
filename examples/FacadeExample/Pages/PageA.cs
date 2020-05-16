@@ -3,12 +3,14 @@ using Arium.Enums;
 using Arium.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
-namespace FacadeExample.Navigables
+namespace FacadeExample.Pages
 {
-    public class PageB : Navigable
+    public class PageA : Navigable
     {
+
         /// <summary>
         /// Gets a Dictionary of actions to go to the next Navigable.
         /// </summary>
