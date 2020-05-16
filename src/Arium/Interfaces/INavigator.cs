@@ -10,7 +10,14 @@ namespace Arium.Interfaces
     /// </summary>
     public interface INavigator
     {
+        /// <summary>
+        /// The Map used for navigation.
+        /// </summary>
         IMap Map { get; }
+
+        /// <summary>
+        /// The Log used to register navigation.
+        /// </summary>
         ILog Log { get; }
 
         /// <summary>
