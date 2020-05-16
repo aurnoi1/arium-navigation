@@ -85,18 +85,18 @@ namespace AUT.Facade.POMs
         /// <returns>The State.</returns>
         public override IState<T> PublishState<T>(StatesNames stateName)
         {
-            bool isDisplayed = UITitle.Exist();
-            var genericIsDisplayed = (T)Convert.ChangeType(isDisplayed, typeof(T));
-            State<T> state = stateName switch
+            bool exist = UITitle.Exist();
+            State<bool> state = stateName switch
             {
-                StatesNames.Exist => new State<T>(this, StatesNames.Exist, genericIsDisplayed),
-                StatesNames.Ready => new State<T>(this, StatesNames.Ready, genericIsDisplayed),
+                StatesNames.Exist => StateFactory.Create(this, StatesNames.Exist, exist),
+                StatesNames.Ready => StateFactory.Create(this, StatesNames.Ready, exist),
                 _ => throw new ArgumentException($"Undefined {nameof(StatesNames)}: {stateName}."),
             };
 
             NotifyObservers(state);
-            return state;
+            return (IState<T>)state;
         }
+
 
         /// <summary>
         /// Gets a Dictionary of action to go to the next INavigable.
