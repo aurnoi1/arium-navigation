@@ -9,12 +9,7 @@ namespace FacadeExample.Navigables
 {
     public class PageB : NavigablePublisher, INavigable
     {
-        public Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
-        {
-            throw new NotImplementedException();
-        }
-
-        public HashSet<DynamicNeighbor> GetDynamicNeighbors()
+        public override Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
         {
             throw new NotImplementedException();
         }

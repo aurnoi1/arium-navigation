@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Arium
 {
     /// <summary>
     /// Abstract implementation of INavigablePublisher.
     /// </summary>
-    public abstract class NavigablePublisher : INavigablePublisher
+    public abstract class NavigablePublisher : INavigable
     {
         private readonly List<WeakReference<INavigableObserver>> observers = new List<WeakReference<INavigableObserver>>();
 
@@ -99,5 +100,22 @@ namespace Arium
         /// <param name="stateName">The state name.</param>
         /// <returns>The State.</returns>
         public abstract IState<T> PublishState<T>(StatesNames stateName);
+
+        /// <summary>
+        /// Gets a Dictionary of action to go to the next INavigable.
+        /// </summary>
+        /// <returns>A Dictionary of action to go to the next INavigable.</returns>
+        public virtual Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
+        {
+            return new Dictionary<INavigable, Action<CancellationToken>>();
+        }
+
+        /// <summary>
+        /// Get the DynamicNeighbors.
+        /// </summary>
+        public virtual HashSet<DynamicNeighbor> GetDynamicNeighbors()
+        {
+            return new HashSet<DynamicNeighbor>();
+        }
     }
 }

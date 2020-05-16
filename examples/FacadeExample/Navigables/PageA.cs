@@ -7,14 +7,9 @@ using System.Threading;
 
 namespace FacadeExample.Navigables
 {
-    public class PageA : NavigablePublisher, INavigable
+    public class PageA : NavigablePublisher
     {
-        public Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
-        {
-            throw new NotImplementedException();
-        }
-
-        public HashSet<DynamicNeighbor> GetDynamicNeighbors()
+        public override Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
         {
             throw new NotImplementedException();
         }
