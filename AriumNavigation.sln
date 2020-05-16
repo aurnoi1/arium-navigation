@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{B7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeExample", "examples\FacadeExample\FacadeExample.csproj", "{B7C5FF37-D8B5-440D-96E6-9DCDAD75640B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeExemple.Demo", "examples\FacadeExemple.Demo\FacadeExemple.Demo.csproj", "{01D806F3-9730-480A-B6FD-3A4F7660D09F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{B7C5FF37-D8B5-440D-96E6-9DCDAD75640B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C5FF37-D8B5-440D-96E6-9DCDAD75640B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C5FF37-D8B5-440D-96E6-9DCDAD75640B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D806F3-9730-480A-B6FD-3A4F7660D09F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D806F3-9730-480A-B6FD-3A4F7660D09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D806F3-9730-480A-B6FD-3A4F7660D09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D806F3-9730-480A-B6FD-3A4F7660D09F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{57DB52F6-75D7-41CB-B622-910E5CA215A3} = {E8AB87A3-40AE-4BC3-9D5B-D91A1EF20528}
 		{04A608F5-5522-4A18-AEDD-FCC27CC42BB4} = {E8AB87A3-40AE-4BC3-9D5B-D91A1EF20528}
 		{B7C5FF37-D8B5-440D-96E6-9DCDAD75640B} = {B71B7239-51C9-42DF-9F01-ED6724124B5B}
+		{01D806F3-9730-480A-B6FD-3A4F7660D09F} = {B71B7239-51C9-42DF-9F01-ED6724124B5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F88DC7E-C038-4CE9-94D5-2CAF70FBC4FC}
