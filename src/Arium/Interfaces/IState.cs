@@ -2,6 +2,10 @@
 
 namespace Arium.Interfaces
 {
+    /// <summary>
+    /// Defines IState.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IState<T>
     {
         /// <summary>

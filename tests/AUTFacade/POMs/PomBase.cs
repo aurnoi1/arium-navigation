@@ -30,8 +30,9 @@ namespace AUT.Facade.POMs
         }
 
         /// <summary>
-        /// Waits for the current INavigable to be fully loaded.
+        /// Notify observers of the current INavigable status.
         /// </summary>
+        /// <returns>The published current INavigable status.</returns>
         public INavigableStatus PublishStatus()
         {
             bool isDisplayed = PublishState<bool>(StatesNames.Exist).Value;
