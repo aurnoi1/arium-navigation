@@ -12,9 +12,9 @@ namespace Arium.Interfaces
     {
 
         /// <summary>
-        /// Gets a Dictionary of action to go to the next INavigable.
+        /// Gets a Dictionary of actions to go to the next Navigable.
         /// </summary>
-        /// <returns>A Dictionary of action to go to the next INavigable.</returns>
+        /// <returns>A Dictionary of actions to go to the next Navigable.</returns>
         Dictionary<INavigable, Action<CancellationToken>> GetActionToNext();
 
         /// <summary>
