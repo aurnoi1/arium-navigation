@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Arium
 {
     /// <summary>
-    /// An abstract implementation of INavigator.
+    /// A Navigator.
     /// </summary>
     public class Navigator : INavigator
     {
@@ -25,11 +25,23 @@ namespace Arium
 
         #region Properties
 
+        /// <summary>
+        /// The Map used for navigation.
+        /// </summary>
         public IMap Map { get; private set; }
+
+        /// <summary>
+        /// The Log used to register navigation.
+        /// </summary>
         public ILog Log { get; private set; }
 
         #endregion Properties
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Navigator"/> class.
+        /// </summary>
+        /// <param name="map">The Map used for navigation.</param>
+        /// <param name="log">The Log used to register navigation.</param>
         public Navigator(IMap map, ILog log)
         {
             Map = map;
@@ -67,19 +79,19 @@ namespace Arium
         /// Executes the Function passed in parameter.
         /// </summary>
         /// <typeparam name="T">The expected returned INavigable.</typeparam>
-        /// <param name="navigable">The Navigable.</param>
+        /// <param name="currentNode">The current node.</param>
         /// <param name="function">The Function to execute.</param>
         /// <param name="cancellationToken">An optional CancellationToken to interrupt the task as soon as possible.
         /// If <c>None</c>then the GlobalCancellationToken will be used.</param>
         /// <returns>The Navigable returns by the Function.</returns>
-        /// does not implement the expected returned type.</exception>
+        /// <exception>does not implement the expected returned type.</exception>
         public INavigable Do<T>(
-            INavigable navigable,
+            INavigable currentNode,
             Func<CancellationToken, INavigable> function,
             CancellationToken cancellationToken) where T : INavigable
         {
             cancellationToken.ThrowIfCancellationRequested();
-            WaitForReady(navigable, cancellationToken);
+            WaitForReady(currentNode, cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             INavigable retINavigable = function.Invoke(cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
@@ -92,11 +104,11 @@ namespace Arium
         /// Performs action to step to the next Navigable in the resolve path.
         /// The next Navigable can be a consecutive or rebased to the current Navigable.
         /// </summary>
-        /// <param name="actionToNextINavigable">A Dictionary of actions to step to the next Navigable.</param>
+        /// <param name="currentNode">The current node.</param>
         /// <param name="next">The next Navigable.</param>
-        /// <param name="cancellationToken">The CancellationToken to interrupt the task as soon as possible.</param>
-        /// <returns>If <c>None</c> or <c>null</c> then the GlobalCancellationToken will be used.</param>
-        /// <returns>The next Navigable or <see cref="Last"/> if the final destination has been reached
+        /// <param name="cancellationToken">The CancellationToken to interrupt the task as soon as possible.
+        /// If <c>None</c> or <c>null</c> then the GlobalCancellationToken will be used.</param>
+        /// <returns>The next Navigable or <see cref="Log.Last"/> if the final destination has been reached
         /// in the action to next Navigable (in case of Resolve() for example).</returns>
         /// <exception cref="UnregistredNeighborException">Throws when next Navigable is not registred in Nodes.</exception>
         public INavigable StepToNext(
