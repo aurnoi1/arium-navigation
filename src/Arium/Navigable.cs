@@ -127,7 +127,7 @@ namespace Arium
             };
 
             NotifyObservers(state);
-            return (IState)state;
+            return state;
         }
 
         /// <summary>

@@ -9,15 +9,6 @@ namespace FacadeExample.Pages
         {
         }
 
-        ///// <summary>
-        ///// Gets a Dictionary of actions to go to the next Navigable.
-        ///// </summary>
-        ///// <returns>A Dictionary of actions to go to the next Navigable.</returns>
-        //public override Dictionary<INavigable, Action<CancellationToken>> GetActionToNext()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         /// <summary>
         /// The function returning the Exist status.
         /// </summary>

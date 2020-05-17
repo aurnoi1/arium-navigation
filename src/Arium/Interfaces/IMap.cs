@@ -9,6 +9,9 @@ namespace Arium.Interfaces
         /// </summary>
         HashSet<INavigable> Nodes { get; }
 
+        /// <summary>
+        /// The Graph of Navigables.
+        /// </summary>
         IGraph Graph { get; }
 
         HashSet<DynamicNeighbor> DynamicNeighbors { get; }
