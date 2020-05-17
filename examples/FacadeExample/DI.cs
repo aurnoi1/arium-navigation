@@ -18,7 +18,6 @@ namespace FacadeExample
         internal static void Build(TypedParameter findControlTimeoutPara)
         {
             var builder = new ContainerBuilder();
-            
             builder.RegisterType<LifetimeScope>().As<ILifetimeScope>().InstancePerLifetimeScope();
             builder.RegisterType<Log>().As<ILog>().InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
@@ -27,7 +26,10 @@ namespace FacadeExample
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<Map>().As<IMap>().InstancePerLifetimeScope();
+            builder.RegisterType<Map>()
+                .As<IMapFacade>()
+                .As<IMap>()
+                .InstancePerLifetimeScope();
 
             builder.Register(c => new HashSet<INavigable>(c.Resolve<IEnumerable<INavigable>>(findControlTimeoutPara)))
                 .As<HashSet<INavigable>>();

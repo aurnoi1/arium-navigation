@@ -20,7 +20,7 @@ namespace FacadeExample
             var scope = DI.Container.BeginLifetimeScope();
             var scopePara = new TypedParameter(typeof(ILifetimeScope), scope);
             Log = scope.Resolve<ILog>() as Log;
-            Map = scope.Resolve<IMap>(scopePara, findControlTimeoutPara) as Map;            
+            Map = scope.Resolve<IMapFacade>(scopePara, findControlTimeoutPara) as Map;            
             Browser = scope.Resolve<IBrowser>(
                 new TypedParameter(typeof(CancellationToken), navigationCancellation)
                 ) as Browser;

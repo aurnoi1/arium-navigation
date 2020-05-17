@@ -4,15 +4,14 @@ using Autofac;
 using FacadeExample.Pages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace FacadeExample
 {
-    public class Map : IMap
+    public class Map : IMapFacade
     {
         private ILifetimeScope scope;
         private TypedParameter findControlTimeoutPara;
+
         public Map(ILifetimeScope scope, TimeSpan findControlTimeout)
         {
             this.scope = scope;
@@ -28,7 +27,5 @@ namespace FacadeExample
         public PageA PageA => scope.Resolve<PageA>(findControlTimeoutPara);
         public PageB PageB => scope.Resolve<PageB>(findControlTimeoutPara);
         public PageC PageC => scope.Resolve<PageC>(findControlTimeoutPara);
-
-
     }
 }
