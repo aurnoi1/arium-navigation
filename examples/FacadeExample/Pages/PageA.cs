@@ -9,7 +9,7 @@ namespace FacadeExample.Pages
         public readonly TimeSpan ControlTimeout;
         public readonly ILog Log;
 
-        public PageA(ILog log, TimeSpan controlTimeout)
+        public PageA(IMap map, ILog log, TimeSpan controlTimeout)
         {
             Log = log;
             ControlTimeout = controlTimeout;

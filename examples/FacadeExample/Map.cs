@@ -11,18 +11,23 @@ namespace FacadeExample
 {
     public class Map : IMap
     {
-        public Map(HashSet<INavigable> nodes, IGraph graph)
+        private ILifetimeScope scope;
+        private TypedParameter findControlTimeoutPara;
+        public Map(ILifetimeScope scope, TimeSpan findControlTimeout)
         {
-            Nodes = nodes;
-            Graph = graph;
+            this.scope = scope;
+            findControlTimeoutPara = new TypedParameter(typeof(TimeSpan), findControlTimeout);
         }
 
-        public HashSet<INavigable> Nodes { get; private set; }
+        public HashSet<INavigable> Nodes => scope.Resolve<HashSet<INavigable>>();
 
-        public IGraph Graph { get; }
+        public IGraph Graph => scope.Resolve<IGraph>();
 
         public HashSet<DynamicNeighbor> DynamicNeighbors => throw new NotImplementedException();
 
+        public PageA PageA => scope.Resolve<PageA>(findControlTimeoutPara);
+        public PageB PageB => scope.Resolve<PageB>(findControlTimeoutPara);
+        public PageC PageC => scope.Resolve<PageC>(findControlTimeoutPara);
 
 
     }

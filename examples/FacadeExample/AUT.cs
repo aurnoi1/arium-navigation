@@ -15,26 +15,21 @@ namespace FacadeExample
 
         public AUT(TimeSpan findControlTimeout, CancellationToken navigationCancellation)
         {
-            DI.Build();
             var findControlTimeoutPara = new TypedParameter(typeof(TimeSpan), findControlTimeout);
-            using var scope = DI.Container.BeginLifetimeScope();
-            Log = scope.Resolve<ILog>();
-            PageA = scope.Resolve<PageA>(findControlTimeoutPara);
-            PageB = scope.Resolve<PageB>(findControlTimeoutPara);
-            PageC = scope.Resolve<PageC>(findControlTimeoutPara);
-            Map = scope.Resolve<IMap>();
+            DI.Build(findControlTimeoutPara);
+            var scope = DI.Container.BeginLifetimeScope();
+            var scopePara = new TypedParameter(typeof(ILifetimeScope), scope);
+            Log = scope.Resolve<ILog>() as Log;
+            Map = scope.Resolve<IMap>(scopePara, findControlTimeoutPara) as Map;            
             Browser = scope.Resolve<IBrowser>(
                 new TypedParameter(typeof(CancellationToken), navigationCancellation)
-                );
+                ) as Browser;
 
         }
 
-        public IMap Map;
-        public ILog Log;
-        public IBrowser Browser;
-        public PageA PageA;
-        public PageB PageB;
-        public PageC PageC;
+        public Map Map;
+        public Log Log;
+        public Browser Browser;
 
     }
 }

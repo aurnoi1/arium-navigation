@@ -2,6 +2,7 @@
 using Arium.Interfaces;
 using Autofac;
 using Autofac.Core;
+using Autofac.Core.Lifetime;
 using FacadeExample.Pages;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace FacadeExample
     {
         internal static IContainer Container;
 
-        internal static void Build()
+        internal static void Build(TypedParameter findControlTimeoutPara)
         {
             var builder = new ContainerBuilder();
+            
+            builder.RegisterType<LifetimeScope>().As<ILifetimeScope>().InstancePerLifetimeScope();
             builder.RegisterType<Log>().As<ILog>().InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<Navigable>()
@@ -24,11 +27,12 @@ namespace FacadeExample
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
-            builder.Register(c => new HashSet<INavigable>(c.Resolve<IEnumerable<INavigable>>()))
+            builder.RegisterType<Map>().As<IMap>().InstancePerLifetimeScope();
+
+            builder.Register(c => new HashSet<INavigable>(c.Resolve<IEnumerable<INavigable>>(findControlTimeoutPara)))
                 .As<HashSet<INavigable>>();
 
             builder.RegisterType<Graph>().As<IGraph>().InstancePerLifetimeScope();
-            builder.RegisterType<Map>().As<IMap>().InstancePerLifetimeScope();
             builder.RegisterType<Navigator>().As<INavigator>().InstancePerLifetimeScope();
             builder.RegisterType<Browser>()
                 .As<IBrowser>()
