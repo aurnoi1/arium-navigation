@@ -19,13 +19,13 @@ namespace Arium
         /// The function returning the Exist status.
         /// </summary>
         /// <returns>The Exists status.</returns>
-        public abstract Func<bool> Exist();
+        protected internal abstract Func<bool> Exist();
 
         /// <summary>
         /// The function returning the Ready status.
         /// </summary>
         /// <returns>The Ready status.</returns>
-        public abstract Func<bool> Ready();
+        protected internal abstract Func<bool> Ready();
 
 
         /// <summary>

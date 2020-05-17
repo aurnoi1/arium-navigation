@@ -33,12 +33,12 @@ namespace FacadeExample.Pages
         /// The function returning the Exist status.
         /// </summary>
         /// <returns>The Exists status.</returns>
-        public override Func<bool> Exist() => () => { return true; };
+        protected override Func<bool> Exist() => () => { return true; };
 
         /// <summary>
         /// The function returning the Ready status.
         /// </summary>
         /// <returns>The Ready status.</returns>
-        public override Func<bool> Ready() => () => { return true; };
+        protected override Func<bool> Ready() => () => { return true; };
     }
 }

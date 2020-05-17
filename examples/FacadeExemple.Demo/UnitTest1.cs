@@ -16,15 +16,17 @@ namespace FacadeExemple.Demo
             using var navigationCancellationSource = new CancellationTokenSource(TimeSpan.FromSeconds(10));
             AUT aut = new AUT(controlTimeOut, navigationCancellationSource.Token);
             var pageA = aut.Map.Nodes.Where(x => x.GetType() == typeof(PageA)).SingleOrDefault() as PageA;
+            aut.PageA.PublishStatus();
+            Assert.Single(aut.Log.Historic);
             Assert.Same(pageA, aut.PageA);
             Assert.Same(aut.Log, aut.Browser.Navigator.Log);
             Assert.Same(aut.Map, aut.Browser.Navigator.Map);
             Assert.False(aut.Browser.GlobalCancellationToken.IsCancellationRequested);
             Assert.Same(aut.Log, pageA.Log);
             Assert.Equal(controlTimeOut, pageA.ControlTimeout);
-            Assert.True(aut.PageA.Exist().Invoke());
-            Assert.True(aut.PageA.Ready().Invoke());
-            aut.PageA.PublishStatus();
+            Assert.True(aut.Browser.Exists(aut.PageA));
+            Assert.True(aut.Browser.WaitForReady(aut.PageA));
+            
         }
     }
 }
