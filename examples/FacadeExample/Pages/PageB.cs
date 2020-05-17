@@ -1,22 +1,12 @@
-﻿using Arium;
-using Arium.Enums;
-using Arium.Interfaces;
+﻿using Arium.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace FacadeExample.Pages
 {
-    public class PageB : Navigable
+    public class PageB : BasePage
     {
-        public readonly TimeSpan ControlTimeout;
-        public readonly ILog Log;
-
-        public PageB(ILog log, TimeSpan controlTimeout)
+        public PageB(IMapFacade map, ILog log, TimeSpan controlTimeout) : base(map, log, controlTimeout)
         {
-            Log = log;
-            ControlTimeout = controlTimeout;
-            RegisterObserver(log);
         }
 
         ///// <summary>
@@ -27,7 +17,6 @@ namespace FacadeExample.Pages
         //{
         //    throw new NotImplementedException();
         //}
-
 
         /// <summary>
         /// The function returning the Exist status.

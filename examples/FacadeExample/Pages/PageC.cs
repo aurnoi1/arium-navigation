@@ -7,16 +7,10 @@ using System.Threading;
 
 namespace FacadeExample.Pages
 {
-    public class PageC : Navigable
+    public class PageC : BasePage
     {
-        public readonly TimeSpan ControlTimeout;
-        public readonly ILog Log;
-
-        public PageC(ILog log, TimeSpan controlTimeout)
+        public PageC(IMapFacade map, ILog log, TimeSpan controlTimeout) : base(map, log, controlTimeout)
         {
-            Log = log;
-            ControlTimeout = controlTimeout;
-            RegisterObserver(log);
         }
 
         ///// <summary>

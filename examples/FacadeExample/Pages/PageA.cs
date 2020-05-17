@@ -1,19 +1,12 @@
-﻿using Arium;
-using Arium.Interfaces;
+﻿using Arium.Interfaces;
 using System;
 
 namespace FacadeExample.Pages
 {
-    public class PageA : Navigable
+    public class PageA : BasePage
     {
-        public readonly TimeSpan ControlTimeout;
-        public readonly ILog Log;
-
-        public PageA(IMap map, ILog log, TimeSpan controlTimeout)
+        public PageA(IMapFacade map, ILog log, TimeSpan controlTimeout) : base(map, log, controlTimeout)
         {
-            Log = log;
-            ControlTimeout = controlTimeout;
-            RegisterObserver(log);
         }
 
         ///// <summary>
