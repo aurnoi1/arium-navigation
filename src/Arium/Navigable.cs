@@ -82,9 +82,8 @@ namespace Arium
         /// <summary>
         /// Notify all observers of the current state.
         /// </summary>
-        /// <typeparam name="T">The state's value type.</typeparam>
         /// <param name="state">The requested State.</param>
-        public void NotifyObservers<T>(IState<T> state)
+        public void NotifyObservers(IState state)
         {
             observers.ForEach(x =>
             {
@@ -106,8 +105,8 @@ namespace Arium
         /// <returns>The published current INavigable status.</returns>
         public virtual INavigableStatus PublishStatus()
         {
-            bool exist = PublishState<bool>(StatesNames.Exist).Value;
-            bool ready = PublishState<bool>(StatesNames.Exist).Value;
+            bool exist = (bool)PublishState(StatesNames.Exist).Value;
+            bool ready = (bool)PublishState(StatesNames.Exist).Value;
             NavigableStatus status = new NavigableStatus(this, exist, ready);
             NotifyObservers(status);
             return status;
@@ -116,12 +115,11 @@ namespace Arium
         /// <summary>
         /// Notify observers of a specific State's value.
         /// </summary>
-        /// <typeparam name="T">The State's value type.</typeparam>
         /// <param name="stateName">The state name.</param>
         /// <returns>The State.</returns>
-        public virtual IState<T> PublishState<T>(StatesNames stateName)
+        public virtual IState PublishState(StatesNames stateName)
         {
-            State<bool> state = stateName switch
+            State state = stateName switch
             {
                 StatesNames.Exist => StateFactory.Create(this, StatesNames.Exist, Exist().Invoke()),
                 StatesNames.Ready => StateFactory.Create(this, StatesNames.Ready, Ready().Invoke()),
@@ -129,7 +127,7 @@ namespace Arium
             };
 
             NotifyObservers(state);
-            return (IState<T>)state;
+            return (IState)state;
         }
 
         /// <summary>

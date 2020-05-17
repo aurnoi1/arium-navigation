@@ -77,7 +77,7 @@ namespace Arium.UITests
         public void FullExample()
         {
             // Set the GlobalCancellationToken used for the time of the Navigation session.
-            using var globalCancellationTokenSource = new CancellationTokenSource(30.s());
+            using var globalCancellationTokenSource = new CancellationTokenSource(3.m());
             var globalCancellationToken = globalCancellationTokenSource.Token;
             var log = new Log();
             var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
@@ -106,8 +106,8 @@ namespace Arium.UITests
                     // and ensures its existance once all actions have been invoked.
                     // So use a specific CancellationToken if you need more precision in the action cancellation.
                     map.PomMenu.UITitle.Get(linkedTokens).Should().NotBeNull();
-                }, 3.s())
-                .Goto(map.PomBlue, 5.s()) // Add a timeout that will run in concurrence of GlobalCancellationToken.
+                }, 30.s())
+                .Goto(map.PomBlue, 50.s()) // Add a timeout that will run in concurrence of GlobalCancellationToken.
                 .Back() // ViewBlue.
                 .Goto(browser.Log.Historic.ElementAt(1)) // The second element of historic is ViewYellow.
                 .Goto(map.PomRed);// Auto resolution of path to red via PomYellow.GetDynamicNeighbors().

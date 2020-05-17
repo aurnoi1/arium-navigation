@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Arium
 {
+    /// <summary>
+    /// A Log.
+    /// </summary>
     public class Log : ILog
     {
         /// <summary>
@@ -12,6 +15,10 @@ namespace Arium
         /// </summary>
         private readonly object historicLock = new object();
 
+        /// <summary>
+        /// 
+        /// Previous accessed INavigable before <see cref="Last"/>.
+        /// </summary>
         public virtual INavigable Previous
         {
             get
@@ -23,6 +30,9 @@ namespace Arium
             }
         }
 
+        /// <summary>
+        /// Last known existing INavigable.
+        /// </summary>
         public INavigable Last
         {
             get
@@ -45,14 +55,25 @@ namespace Arium
             }
         }
 
+        /// <summary>
+        /// The historic of previsously existing INavigables.
+        /// </summary>
         public List<INavigable> Historic { get; private set; } = new List<INavigable>();
 
+        /// <summary>
+        /// Update the observer with this Navigable's status.
+        /// </summary>
+        /// <param name="status">The NavigableStatus.</param>
         public void Update(INavigableStatus status)
         {
             SetLast(status.Exist);
         }
 
-        public void Update<T>(IState<T> state)
+        /// <summary>
+        /// Update the observer with this Navigable's State.
+        /// </summary>
+        /// <param name="state">The State.</param>
+        public void Update(IState state)
         {
             if (state.Name == StatesNames.Exist)
             {
@@ -63,9 +84,9 @@ namespace Arium
         /// <summary>
         /// Set the last known INavigable is exists.
         /// </summary>
-        /// <param name="status">The NavigableStatus of the last INavigable.</param>
+        /// <param name="state">A State of the last INavigable.</param>
         /// <returns><c>true</c> if the INavigable exists, otherwise <c>false</c>.</returns>
-        private void SetLast(IState<bool> state)
+        private void SetLast(IState state)
         {
             if (state.Name == StatesNames.Exist)
             {

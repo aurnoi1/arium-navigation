@@ -229,7 +229,7 @@ namespace Arium
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                if (navigable.PublishStatus().Exist.Value)
+                if ((bool)navigable.PublishStatus().Exist.Value)
                 {
                     return;
                 }
@@ -245,7 +245,7 @@ namespace Arium
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                if (navigable.PublishStatus().Ready.Value)
+                if ((bool)navigable.PublishStatus().Ready.Value)
                 {
                     return;
                 }
@@ -306,7 +306,7 @@ namespace Arium
         private INavigable GetExistingNavigable(INavigable navigable, CancellationToken cancellationToken)
         {
             if (cancellationToken.IsCancellationRequested) return null;
-            bool exists = navigable.PublishStatus().Exist.Value;
+            bool exists = (bool)navigable.PublishStatus().Exist.Value;
             return exists ? navigable : null;
         }
 

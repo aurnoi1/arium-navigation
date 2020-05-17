@@ -31,10 +31,9 @@ namespace Arium.Interfaces
         /// <summary>
         /// Notify observers of a specific State's value.
         /// </summary>
-        /// <typeparam name="T">The State's value type.</typeparam>
         /// <param name="stateName">The state name.</param>
         /// <returns>The State.</returns>
-        IState<T> PublishState<T>(StatesNames stateName);
+        IState PublishState(StatesNames stateName);
 
         /// <summary>
         /// Register the NavigableObserver as a WeakReference.
@@ -58,8 +57,7 @@ namespace Arium.Interfaces
         /// <summary>
         /// Notify all observers of the current state.
         /// </summary>
-        /// <typeparam name="T">The state's value type.</typeparam>
         /// <param name="state">The requested State.</param>
-        void NotifyObservers<T>(IState<T> state);
+        void NotifyObservers(IState state);
     }
 }

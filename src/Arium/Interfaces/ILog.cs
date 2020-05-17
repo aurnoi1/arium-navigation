@@ -13,12 +13,12 @@ namespace Arium.Interfaces
         INavigable Last { get; }
 
         /// <summary>
-        /// Previous accessed INavigable before the last known INavigable.
+        /// Previous accessed INavigable before <see cref="Last"/>.
         /// </summary>
         INavigable Previous { get; }
 
         /// <summary>
-        /// The historic of previsous existing INavigable.
+        /// The historic of previsously existing INavigables.
         /// </summary>
         List<INavigable> Historic { get; }
     }

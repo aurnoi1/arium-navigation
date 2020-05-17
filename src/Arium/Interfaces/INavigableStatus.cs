@@ -13,11 +13,11 @@
         /// <summary>
         /// The Exist state of the Navigable.
         /// </summary>
-        IState<bool> Exist { get; }
+        IState Exist { get; }
 
         /// <summary>
         /// The Ready state.
         /// </summary>
-        IState<bool> Ready { get; }
+        IState Ready { get; }
     }
 }

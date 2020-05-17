@@ -52,13 +52,12 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// Notify observers of a specific State's value.
         /// </summary>
-        /// <typeparam name="T">The State's value type.</typeparam>
         /// <param name="stateName">The state name.</param>
         /// <returns>The State.</returns>
-        public override IState<T> PublishState<T>(StatesNames stateName)
+        public override IState PublishState(StatesNames stateName)
         {
             bool exist = UILblTitle.Exist();
-            State<bool> state = stateName switch
+            State state = stateName switch
             {
                 StatesNames.Exist => StateFactory.Create(this, StatesNames.Exist, exist),
                 StatesNames.Ready => StateFactory.Create(this, StatesNames.Ready, exist),
@@ -66,7 +65,7 @@ namespace AUT.Facade.POMs
             };
 
             NotifyObservers(state);
-            return (IState<T>)state;
+            return state;
         }
 
         /// <summary>

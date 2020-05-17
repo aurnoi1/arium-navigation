@@ -11,12 +11,12 @@ namespace Arium
         /// <summary>
         /// The Exist status.
         /// </summary>
-        public IState<bool> Exist { get; private set; }
+        public IState Exist { get; private set; }
 
         /// <summary>
         /// The Ready status.
         /// </summary>
-        public IState<bool> Ready { get; private set; }
+        public IState Ready { get; private set; }
 
         /// <summary>
         /// The Navigable observed.
@@ -32,8 +32,8 @@ namespace Arium
         public NavigableStatus(INavigable navigable, bool exist, bool ready)
         {
             Navigable = navigable;
-            Exist = new State<bool>(navigable, StatesNames.Exist, exist);
-            Ready = new State<bool>(navigable, StatesNames.Ready, ready);
+            Exist = new State(navigable, StatesNames.Exist, exist);
+            Ready = new State(navigable, StatesNames.Ready, ready);
         }
     }
 }

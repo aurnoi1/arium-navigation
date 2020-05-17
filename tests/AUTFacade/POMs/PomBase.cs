@@ -35,7 +35,7 @@ namespace AUT.Facade.POMs
         /// <returns>The published current INavigable status.</returns>
         public INavigableStatus PublishStatus()
         {
-            bool isDisplayed = PublishState<bool>(StatesNames.Exist).Value;
+            bool isDisplayed = (bool)PublishState(StatesNames.Exist).Value;
             NavigableStatus status = new NavigableStatus(this, isDisplayed, isDisplayed);
             NotifyObservers(status);
             return status;
@@ -44,10 +44,9 @@ namespace AUT.Facade.POMs
         /// <summary>
         /// Notify observers of a specific State's value.
         /// </summary>
-        /// <typeparam name="T">The State's value type.</typeparam>
         /// <param name="stateName">The state name.</param>
         /// <returns>The State.</returns>
-        public abstract IState<T> PublishState<T>(StatesNames stateName);
+        public abstract IState PublishState(StatesNames stateName);
 
         /// <summary>
         /// Gets a Dictionary of action to go to the next INavigable.
@@ -110,7 +109,7 @@ namespace AUT.Facade.POMs
         /// Notify all observers of the current state.
         /// </summary>
         /// <param name="state">The State.</param>
-        public void NotifyObservers<T>(IState<T> state)
+        public void NotifyObservers(IState state)
         {
             observers.ForEach(x =>
             {

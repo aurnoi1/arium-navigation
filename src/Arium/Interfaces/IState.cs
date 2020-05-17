@@ -5,8 +5,7 @@ namespace Arium.Interfaces
     /// <summary>
     /// Defines IState.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface IState<T>
+    public interface IState
     {
         /// <summary>
         /// The Navigable observed.
@@ -21,6 +20,6 @@ namespace Arium.Interfaces
         /// <summary>
         /// State's value.
         /// </summary>
-        T Value { get; }
+        object Value { get; }
     }
 }

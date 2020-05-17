@@ -265,7 +265,7 @@ namespace Arium
         /// <returns><c>true</c> if exists, otherwise <c>false</c>.</returns>
         public bool Exists(INavigable navigable)
         {
-            return navigable.PublishStatus().Exist.Value;
+            return (bool)navigable.PublishStatus().Exist.Value;
         }
 
         /// <summary>
