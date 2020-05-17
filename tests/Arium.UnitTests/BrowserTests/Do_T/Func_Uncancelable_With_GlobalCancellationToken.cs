@@ -19,7 +19,7 @@ namespace Arium.UnitTests.BrowserTests.Do_T
                 // Arrange
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
-                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
+                var browser = new Browser(navigator.Log, navigator, globalCTS.Token);
 
                 // Act
                 browser.Do<INavigable>(() =>
@@ -38,7 +38,7 @@ namespace Arium.UnitTests.BrowserTests.Do_T
                 // Arrange
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
-                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
+                var browser = new Browser(navigator.Log, navigator, globalCTS.Token);
 
                 // Act
                 Action act = () => browser.Do<INavigable>(() =>
@@ -62,12 +62,12 @@ namespace Arium.UnitTests.BrowserTests.Do_T
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(false);
-                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
+                var browser = new Browser(navigator.Log, navigator, globalCTS.Token);
 
                 // Act
                 Action act = () => browser.Do<INavigable>((cancellationToken) =>
                 {
-                    return browser.Map.Nodes.Last();
+                    return navigator.Map.Nodes.Last();
                 });
 
                 // Assert
@@ -85,7 +85,7 @@ namespace Arium.UnitTests.BrowserTests.Do_T
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 Mock.Get(navigator.Map.Nodes.Last()).Setup(x => x.PublishStatus().Exist.Value).Returns(true);
-                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
+                var browser = new Browser(navigator.Log, navigator, globalCTS.Token);
 
                 // Act
                 browser.Do<INavigable>((cancellationToken) =>

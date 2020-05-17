@@ -57,7 +57,7 @@ namespace Arium.UITests
             var log = new Log();
             var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
             var nav = new Navigator(map, log);
-            var browser = new Browser(map, log, nav, globalCancellationToken);
+            var browser = new Browser(log, nav, globalCancellationToken);
             browser.Navigator.WaitForExist(map.PomMenu, globalCancellationToken);
             browser.Navigator.Goto(map.PomMenu, map.PomYellow, globalCancellationToken);
             browser.Navigator.Goto(map.PomYellow, map.PomRed, globalCancellationToken);
@@ -82,7 +82,7 @@ namespace Arium.UITests
             var log = new Log();
             var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
             var navigator = new Navigator(map, log);
-            var browser = new Browser(map, log, navigator, globalCancellationToken);
+            var browser = new Browser(log, navigator, globalCancellationToken);
             browser.WaitForExist(map.PomMenu); // Use GlobalCancellationToken.
             browser.WaitForReady(map.PomMenu, 3.s()); // Use timeout in concurrence of GlobalCancellationToken.
             browser

@@ -60,7 +60,7 @@ namespace Arium.UITests.FindNow
             var log = new Log();
             var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
             var navigator = new Navigator(map, log);
-            var browser = new Browser(map, log, navigator, globalCancellationToken);
+            var browser = new Browser(log, navigator, globalCancellationToken);
             browser.WaitForExist(map.PomMenu);
 
             // Act
@@ -82,7 +82,7 @@ namespace Arium.UITests.FindNow
             var log = new Log();
             var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
             var navigator = new Navigator(map, log);
-            var browser = new Browser(map, log, navigator, globalCancellationToken);
+            var browser = new Browser(log, navigator, globalCancellationToken);
             browser.WaitForExist(map.PomMenu);
 
             // Act

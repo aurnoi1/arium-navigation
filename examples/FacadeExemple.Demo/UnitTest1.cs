@@ -21,8 +21,7 @@ namespace FacadeExemple.Demo
             Assert.NotSame(aut.Log, aut2.Log);
             Assert.Single(aut.Log.Historic);
             Assert.Same(pageA, aut.Map.PageA);
-            Assert.Same(aut.Log, aut.Browser.Navigator.Log);
-            Assert.Same(aut.Map, aut.Browser.Navigator.Map);
+            Assert.Same(aut.Log, aut.Browser.Log);
             Assert.False(aut.Browser.GlobalCancellationToken.IsCancellationRequested);
             Assert.Same(aut.Log, pageA.Log);
             Assert.Same(aut.Map, pageA.Map);

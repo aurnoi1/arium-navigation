@@ -20,11 +20,6 @@ namespace Arium.Interfaces
         ILog Log { get; }
 
         /// <summary>
-        /// The Map used for navigation.
-        /// </summary>
-        IMap Map { get; }
-
-        /// <summary>
         /// The Navigator.
         /// </summary>
         INavigator Navigator { get; }

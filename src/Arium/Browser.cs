@@ -11,11 +11,6 @@ namespace Arium
     public class Browser : IBrowser
     {
         /// <summary>
-        /// The Map used for navigation.
-        /// </summary>
-        public IMap Map { get; }
-
-        /// <summary>
         /// The Navigator.
         /// </summary>
         public INavigator Navigator { get; }
@@ -33,13 +28,11 @@ namespace Arium
         /// <summary>
         /// Initializes a new instance of the <see cref="Browser"/> class.
         /// </summary>
-        /// <param name="map">The map of Navigables.</param>
         /// <param name="log">The Log.</param>
         /// <param name="navigator">The Navigator.</param>
         /// <param name="globalCancellationToken">The CancellationToken set for browsing session.</param>
-        public Browser(IMap map, ILog log, INavigator navigator, CancellationToken globalCancellationToken)
+        public Browser(ILog log, INavigator navigator, CancellationToken globalCancellationToken)
         {
-            Map = map;
             Log = log;
             Navigator = navigator;
             GlobalCancellationToken = CheckCancellationToken(globalCancellationToken);

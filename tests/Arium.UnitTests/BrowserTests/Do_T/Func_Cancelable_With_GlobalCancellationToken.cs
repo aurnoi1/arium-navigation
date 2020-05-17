@@ -19,7 +19,7 @@ namespace Arium.UnitTests.BrowserTests.Do_T
                 // Arrange
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
-                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
+                var browser = new Browser(navigator.Log, navigator, globalCTS.Token);
 
                 // Act
                 browser.Do<INavigable>((globalCancellationToken) =>
@@ -38,7 +38,7 @@ namespace Arium.UnitTests.BrowserTests.Do_T
                 // Arrange
                 Mock.Get(navigator.Log).SetupGet(x => x.Last).Returns(navigator.Map.Nodes.First());
                 using var globalCTS = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
-                var browser = new Browser(navigator.Map, navigator.Log, navigator, globalCTS.Token);
+                var browser = new Browser(navigator.Log, navigator, globalCTS.Token);
 
                 // Act
                 Action act = () => browser.Do<INavigable>((globalCancellationToken) =>
