@@ -14,8 +14,8 @@ namespace FacadeExemple.Demo
         {
             var controlTimeOut = TimeSpan.FromSeconds(3);
             using var navigationCancellationSource = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-            AUT aut = new AUT(controlTimeOut, navigationCancellationSource.Token);
-            AUT aut2 = new AUT(controlTimeOut, navigationCancellationSource.Token);
+            using AUT aut = new AUT(controlTimeOut, navigationCancellationSource.Token);
+            using AUT aut2 = new AUT(controlTimeOut, navigationCancellationSource.Token);
             var pageA = aut.Map.Nodes.Where(x => x.GetType() == typeof(PageA)).SingleOrDefault() as PageA;
             aut.Map.PageA.PublishStatus();
             Assert.NotSame(aut.Log, aut2.Log);
