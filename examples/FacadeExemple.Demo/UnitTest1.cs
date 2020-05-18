@@ -28,7 +28,6 @@ namespace FacadeExemple.Demo
             Assert.Equal(controlTimeOut, pageA.ControlTimeout);
             Assert.True(aut.Browser.Exists(aut.Map.PageA));
             Assert.True(aut.Browser.WaitForReady(aut.Map.PageA));
-            
         }
     }
 }

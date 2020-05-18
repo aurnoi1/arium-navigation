@@ -1,5 +1,7 @@
-﻿using Arium.Interfaces;
+﻿using Arium;
+using Arium.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace FacadeExample.Pages
 {
