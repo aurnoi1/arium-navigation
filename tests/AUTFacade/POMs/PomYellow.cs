@@ -89,9 +89,11 @@ namespace AUT.Facade.POMs
 
         public override HashSet<DynamicNeighbor> GetDynamicNeighbors()
         {
-            var dynamicPaths = new HashSet<DynamicNeighbor>();
-            var alternatives = new HashSet<INavigable>() { map.PomRed, map.PomBlue, map.PomMenu };
-            dynamicPaths.Add(new DynamicNeighbor(this, alternatives));
+            var dynamicPaths = new HashSet<DynamicNeighbor>
+            {
+                new DynamicNeighbor(this, map.PomRed, map.PomBlue, map.PomMenu)
+            };
+
             return dynamicPaths;
         }
 
