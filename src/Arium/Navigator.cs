@@ -127,10 +127,10 @@ namespace Arium
             actionToOpen.Invoke(cancellationToken);
             if (gotoDestination != null)
             {
-                var dynamicPath = Map.DynamicNeighbors.Where(x => x.Origin == currentNode).SingleOrDefault();
-                if (dynamicPath != null)
+                var currentNodeDynamicNeighbors = Map.DynamicNeighbors.Where(x => x.Origin == currentNode).SingleOrDefault();
+                if (currentNodeDynamicNeighbors != null && currentNodeDynamicNeighbors.Alternatives.Count > 0)
                 {
-                    Resolve(dynamicPath.Alternatives, next, cancellationToken);
+                    Resolve(currentNodeDynamicNeighbors.Alternatives, next, cancellationToken);
                 }
 
                 WaitForExist(next, cancellationToken);
