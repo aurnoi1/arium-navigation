@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <Version>1.0.0-beta0004</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
@@ -10,13 +10,12 @@
     <Description>Provides extension methods to create TimeSpan as timeout expressed in the International System.</Description>
     <Summary>Provides extension methods to create TimeSpan as timeout expressed in the International System.</Summary>
     <Title>TimeoutEx</Title>
-    <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
+    <Copyright>@Copyright Aurelien Noisette 2021</Copyright>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
     <PackageTags>Test-Automation Timeout TimeSpan TimeoutEx</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Not ready for production!
-- Add netcoreapp3.0 support.</PackageReleaseNotes>
+    <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -40,8 +40,8 @@ namespace Arium.UITests.FindNow
         {
             var splited = Environment.CurrentDirectory.Split('\\').ToList();
             var build = splited.ElementAt(splited.IndexOf("bin") + 1);
-            var testsDir = Environment.CurrentDirectory.Replace($@"AriumUITests\bin\{build}\netcoreapp3.0", "");
-            string path = $@"{testsDir}\AUT\bin\{build}\AUT.exe";
+            var testsDir = Environment.CurrentDirectory.Replace($@"AriumUITests\bin\{build}\netcoreapp3.1", "");
+            string path = $@"{testsDir}AUT\bin\{build}\AUT.exe";
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException($"The application under tests \"{path}\" was not found.");

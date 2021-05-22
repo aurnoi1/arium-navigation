@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
    <PropertyGroup>
-      <TargetFrameworks>netstandard2.1;netcoreapp3.0</TargetFrameworks>
+      <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
       <LangVersion>8</LangVersion>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <Copyright>@Copyright Aurelien Noisette 2019</Copyright>
+      <Copyright>@Copyright Aurelien Noisette 2021</Copyright>
       <Description>Automate navigation through user interfaces.</Description>
       <Summary>Automate navigation through user interfaces.</Summary>
       <Title>Arium</Title>
@@ -16,8 +16,7 @@
       <Authors>Aurelien Noisette</Authors>
       <Company>Aurelien Noisette</Company>
       <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-      <PackageReleaseNotes>Not ready for production!
-- Add netcoreapp3.0 support.</PackageReleaseNotes>
+      <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
    </PropertyGroup>
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
    </PropertyGroup>
