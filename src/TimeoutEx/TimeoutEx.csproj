@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <Version>1.0.0-beta0004</Version>
+    <Version>1.0.0-beta0005</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <Authors>Aurelien Noisette</Authors>
@@ -15,7 +15,11 @@
     <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
     <PackageTags>Test-Automation Timeout TimeSpan TimeoutEx</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
+    <PackageReleaseNotes>
+        Not ready for production!
+        
+        - (Breaking changes) Update to dotnet core 3.1.
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

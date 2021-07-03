@@ -12,11 +12,15 @@
         <Title>Propertium</Title>
         <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
         <PackageTags>Arium Test-automation Appium Propertium UI-Test UI-Testing</PackageTags>
-        <Version>1.0.0-beta0004</Version>
+        <Version>1.0.0-beta0005</Version>
         <Authors>Aurelien Noisette</Authors>
         <Company>Aurelien Noisette</Company>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-        <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
+        <PackageReleaseNotes>
+          Not ready for production!
+
+          - (Breaking changes) Update to dotnet core 3.1.
+        </PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>

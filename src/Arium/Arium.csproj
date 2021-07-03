@@ -12,11 +12,21 @@
       <PackageProjectUrl>https://github.com/aurnoi1/arium-navigation</PackageProjectUrl>
       <PackageTags>Arium Test-automation Appium UI-Test UI-Testing</PackageTags>
       <PackageLicenseUrl></PackageLicenseUrl>
-      <Version>1.0.0-beta0004</Version>
+      <Version>1.0.0-beta0005</Version>
       <Authors>Aurelien Noisette</Authors>
       <Company>Aurelien Noisette</Company>
       <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-      <PackageReleaseNotes>Not ready for production!</PackageReleaseNotes>
+      <PackageReleaseNotes>
+          Not ready for production!
+
+          - (Breaking changes) Update to dotnet core 3.1.
+          - (Breaking changes) IState does not implement returned type anymore.
+          - (Breaking changes) IState.Value is of type Object now.
+          - (Breaking changes) The IStates 'Exist' and 'Ready' are reserved now.
+          - (Breaking changes) Map is no longer part of a Browser.
+          - Add a StateFactory to create State.
+          - The abstract class 'Navigable' can be used as base class for INavigable.
+      </PackageReleaseNotes>
    </PropertyGroup>
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
    </PropertyGroup>
