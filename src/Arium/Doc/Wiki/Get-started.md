@@ -28,11 +28,17 @@ The `Navigator` is the object that will resolved the navigation at run time. You
 The `Browser` is the object provides methods to navigate. Most of these methods are returning the browser itself so they can be chained.
 
 # The chicken and egg problem
-The first problem we will face is the implementation of the pages. Given the recursive nature of the system to resolve the navigation at real time, pages need references to other pages, declared in Map, that need reference to these first ones. Basically, Map needs to reference the Pages, and the Pages need to reference Map.
-The solution implemented in this example is to delayed the instantiation of the pages declared in Map. The example uses AutoFac as dependency resolver, so Map has access to the container's scope. This is one way to implement it but you can also implement your own resolver not based on dependency injection. But you will probably ending up to delay the pages instantiation in all case.
+The first problem we will face is the implementation of the pages. 
+Given the recursive nature of the system to resolve the navigation at real time,
+pages need references to other pages, declared in Map, that need reference to these first ones.
+Basically, Map needs to reference the Pages, and the Pages need to reference Map.
+The solution implemented in this example is to delayed the instantiation of the pages declared in Map.
+The example uses AutoFac as dependency resolver, so Map has access to the container's scope.
+This is one way to implement it but you can also implement your own resolver not based on dependency injection.
+But you will probably ending up to delay the pages instantiation in all cases.
 
 # Define classes
-Because of the chicken and egg problem, there is some back and forth will creating the classes the first time.
+Because of the chicken and egg problem, there is some back and forth while creating the classes the first time.
 
 The order of creation used for this example is:
 > IMapFacade (:IMap) -> Map (:IMapInterface) -> BasePage (:Navigable), PageA (:BasePage), PageB (:BasePage), PageC (:BasePage)-> AUT (:IDisposable) -> DI

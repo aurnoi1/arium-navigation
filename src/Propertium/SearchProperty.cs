@@ -87,7 +87,7 @@ namespace Propertium
         /// </summary>
         /// <returns>The matching WebElement.</returns>
         /// <exception cref="WebDriverException">Thrown when no element is found.</exception>
-        /// <remarks>This is the default behavior of <see cref="IFindsByFluentSelector.FindElement(string, string)"/>.</remarks>
+        /// <remarks>This is the default behavior of "IFindsByFluentSelector.FindElement(string, string)".</remarks>
         public W FindNow()
         {
             return WebDriver.FindElement(Selector, Value);
