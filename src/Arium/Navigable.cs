@@ -106,7 +106,7 @@ namespace Arium
         public virtual INavigableStatus PublishStatus()
         {
             bool exist = (bool)PublishState(StatesNames.Exist).Value;
-            bool ready = (bool)PublishState(StatesNames.Exist).Value;
+            bool ready = (bool)PublishState(StatesNames.Ready).Value;
             NavigableStatus status = new NavigableStatus(this, exist, ready);
             NotifyObservers(status);
             return status;
