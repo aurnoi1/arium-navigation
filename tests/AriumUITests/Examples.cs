@@ -1,3 +1,4 @@
+using Arium.Interfaces;
 using AUT.Facade;
 using AUT.Facade.POMs;
 using FluentAssertions;
@@ -14,7 +15,7 @@ using Xunit;
 namespace Arium.UITests
 {
     [Collection("UITests")]
-    public class Examples
+    public class Examples : IDisposable
     {
         public Uri Uri { get => new Uri("http://localhost:4723/wd/hub"); }
 
@@ -49,16 +50,28 @@ namespace Arium.UITests
             return path;
         }
 
-        [Fact]
-        public void Test1()
+        private readonly Map<WindowsDriver<WindowsElement>> map;
+        private readonly IBrowser browser;
+        private readonly ILog log;
+        private readonly Navigator nav;
+        private readonly CancellationToken globalCancellationToken;
+        private readonly CancellationTokenSource globalCancellationTokenSource;
+
+        public Examples()
         {
-            using var globalCancellationTokenSource = new CancellationTokenSource(10.m());
-            var globalCancellationToken = globalCancellationTokenSource.Token;
-            var log = new Log();
-            var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
-            var nav = new Navigator(map, log);
-            var browser = new Browser(log, nav, globalCancellationToken);
-            browser.Navigator.WaitForExist(map.PomMenu, globalCancellationToken);
+            globalCancellationTokenSource = new CancellationTokenSource(10.m());
+            globalCancellationToken = globalCancellationTokenSource.Token;
+            log = new Log();
+            map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
+            nav = new Navigator(map, log);
+            browser = new Browser(log, nav, globalCancellationToken);
+            browser.WaitForExist(map.PomMenu);
+            browser.WaitForReady(map.PomMenu, 3.s());
+        }
+
+        [Fact]
+        public void Validate_Selector_Strategies()
+        {
             browser.Navigator.Goto(map.PomMenu, map.PomYellow, globalCancellationToken);
             browser.Navigator.Goto(map.PomYellow, map.PomRed, globalCancellationToken);
             browser.Navigator.Goto(map.PomRed, map.PomBlue, globalCancellationToken);
@@ -70,21 +83,11 @@ namespace Arium.UITests
             browser.Navigator.Goto(map.PomMenu, map.PomYellow, globalCancellationToken);
             browser.Navigator.Do<PomMenu<WindowsDriver<WindowsElement>>>(map.PomYellow, (x) => map.PomYellow.OpenMenuByMenuBtn(TimeSpan.FromSeconds(10)), globalCancellationToken);
             browser.Navigator.Back(globalCancellationToken);
-            map.RemoteDriver.Close();
         }
 
         [Fact]
-        public void FullExample()
+        public void Full_Example()
         {
-            // Set the GlobalCancellationToken used for the time of the Navigation session.
-            using var globalCancellationTokenSource = new CancellationTokenSource(3.m());
-            var globalCancellationToken = globalCancellationTokenSource.Token;
-            var log = new Log();
-            var map = new Map<WindowsDriver<WindowsElement>>(WinDriver, log);
-            var navigator = new Navigator(map, log);
-            var browser = new Browser(log, navigator, globalCancellationToken);
-            browser.WaitForExist(map.PomMenu); // Use GlobalCancellationToken.
-            browser.WaitForReady(map.PomMenu, 3.s()); // Use timeout in concurrence of GlobalCancellationToken.
             browser
                 .Goto(map.PomYellow)
                 .Do<PomMenu<WindowsDriver<WindowsElement>>>(() =>
@@ -115,6 +118,11 @@ namespace Arium.UITests
             // First page in historic was PomMenu.
             browser.Log.Historic.First().Should().Be(map.PomMenu);
             browser.Log.Historic.Last().Should().Be(map.PomRed);
+        }
+
+        public void Dispose()
+        {
+            globalCancellationTokenSource.Dispose();
             map.RemoteDriver.Close();
         }
     }
