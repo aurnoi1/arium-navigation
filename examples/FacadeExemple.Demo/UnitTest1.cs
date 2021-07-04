@@ -18,7 +18,8 @@ namespace FacadeExemple.Demo
             using AUT aut2 = new AUT(controlTimeOut, navigationCancellationSource.Token);
             var pageA = aut.Map.Nodes.Where(x => x.GetType() == typeof(PageA)).SingleOrDefault() as PageA;
             aut.Map.PageA.PublishStatus();
-            Assert.NotSame(aut.Log, aut2.Log);
+            Assert.True((bool)aut.Map.PageA.PublishStatus().Exist.Value);
+            Assert.True((bool)aut.Map.PageA.PublishStatus().Ready.Value);
             Assert.Single(aut.Log.Historic);
             Assert.Same(pageA, aut.Map.PageA);
             Assert.Same(aut.Log, aut.Browser.Log);
