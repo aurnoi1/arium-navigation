@@ -32,6 +32,20 @@ namespace FacadeExemple.Demo
             Assert.Equal(controlTimeOut, pageA.ControlTimeout);
             Assert.True(aut.Browser.Exists(aut.Map.PageA));
             Assert.True(aut.Browser.WaitForReady(aut.Map.PageA));
+            aut.Browser
+                .Goto(aut.Map.PageA)
+                .Goto(aut.Map.PageB)
+                .Do<PageA>((lt) =>
+                {
+                    Assert.NotEqual(lt, navigationCancellationSource.Token);
+                    return aut.Map.PageB.OpenPageA(lt);
+                }, TimeSpan.FromSeconds(30))
+                .Do((lt) =>
+                {
+                    Assert.Equal(lt, navigationCancellationSource.Token);
+                })
+                .Goto(aut.Map.PageC)
+                .Goto(aut.Map.PageA);
         }
     }
 }
