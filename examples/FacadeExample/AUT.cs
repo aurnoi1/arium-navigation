@@ -2,6 +2,7 @@
 using Arium.Interfaces;
 using Autofac;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace FacadeExample
@@ -11,16 +12,14 @@ namespace FacadeExample
         private bool disposed = false;
         private readonly ILifetimeScope scope;
 
-        public AUT(TimeSpan findControlTimeout, CancellationToken navigationCancellation)
+        public AUT(TestContext testContext)
         {
-            var findControlTimeoutPara = new TypedParameter(typeof(TimeSpan), findControlTimeout);
-            DI.Build(findControlTimeoutPara);
+            DI.Build(testContext);
             scope = DI.Container.BeginLifetimeScope();
-            var scopePara = new TypedParameter(typeof(ILifetimeScope), scope);
             Log = scope.Resolve<ILog>() as Log;
-            Map = scope.Resolve<IMapFacade>(scopePara, findControlTimeoutPara) as Map;
+            Map = scope.Resolve<IMapFacade>() as Map;
             Browser = scope.Resolve<IBrowser>(
-                new TypedParameter(typeof(CancellationToken), navigationCancellation)
+                new TypedParameter(typeof(CancellationToken), testContext.NavigationCancellation)
                 ) as Browser;
         }
 

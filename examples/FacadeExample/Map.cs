@@ -4,29 +4,30 @@ using Autofac;
 using FacadeExample.Pages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FacadeExample
 {
     public class Map : IMapFacade
     {
-        private readonly ILifetimeScope scope;
-        private readonly TypedParameter findControlTimeoutPara;
         private HashSet<DynamicNeighbor> dynamicNeighbors;
+        private readonly Lazy<HashSet<INavigable>> _nodes;
+        private readonly Lazy<IGraph> _graph;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Map"/> class.
         /// </summary>
-        /// <param name="scope">The Container's scope used as DI resolver.</param>
-        /// <param name="findControlTimeout">The timeout to find a control on a page.
-        /// This parameter is needed for the pages resolution.</param>
-        public Map(ILifetimeScope scope, TimeSpan findControlTimeout)
+        /// <param name="nodes">The INaviable nodes.</param>
+        /// <param name="graph">The Graph.</param>
+        /// <remarks>The parameters are Lazy to prevent recursive initialization exception.</remarks>
+        public Map(Lazy<HashSet<INavigable>> nodes, Lazy<IGraph> graph)
         {
-            this.scope = scope;
-            findControlTimeoutPara = new TypedParameter(typeof(TimeSpan), findControlTimeout);
+            _nodes = nodes;
+            _graph = graph;
         }
 
-        public HashSet<INavigable> Nodes => scope.Resolve<HashSet<INavigable>>();
-        public IGraph Graph => scope.Resolve<IGraph>();
+        public HashSet<INavigable> Nodes => _nodes.Value;
+        public IGraph Graph => _graph.Value;
 
         public HashSet<DynamicNeighbor> DynamicNeighbors
         {
@@ -37,9 +38,9 @@ namespace FacadeExample
             }
         }
 
-        public PageA PageA => scope.Resolve<PageA>(findControlTimeoutPara);
-        public PageB PageB => scope.Resolve<PageB>(findControlTimeoutPara);
-        public PageC PageC => scope.Resolve<PageC>(findControlTimeoutPara);
+        public PageA PageA => GetPage<PageA>(Nodes);
+        public PageB PageB => GetPage<PageB>(Nodes);
+        public PageC PageC => GetPage<PageC>(Nodes);
 
         private HashSet<DynamicNeighbor> GetDynamicNeighbors()
         {
@@ -53,6 +54,13 @@ namespace FacadeExample
             }
 
             return dynamicNeighbors;
+        }
+
+        private T GetPage<T>(IEnumerable<INavigable> pages) where T : INavigable
+        {
+            Type t = typeof(T);
+            var page = (T)pages.Where(p => p.GetType() == t).SingleOrDefault();
+            return page;
         }
     }
 }

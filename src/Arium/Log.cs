@@ -16,8 +16,7 @@ namespace Arium
         private readonly object historicLock = new object();
 
         /// <summary>
-        /// 
-        /// Previous accessed INavigable before <see cref="Last"/>.
+        /// Previously accessed INavigable before <see cref="Last"/>.
         /// </summary>
         public virtual INavigable Previous
         {
