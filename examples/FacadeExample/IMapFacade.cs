@@ -3,7 +3,7 @@ using FacadeExample.Pages;
 
 namespace FacadeExample
 {
-    public interface IMapFacade : IMap
+    public interface IMapFacade
     {
         PageA PageA { get; }
         PageB PageB { get; }

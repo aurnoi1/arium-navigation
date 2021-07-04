@@ -1,13 +1,14 @@
 ﻿using Arium;
 using Arium.Interfaces;
 using Autofac;
+using FacadeExample.Pages;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 
 namespace FacadeExample
 {
-    public class AUT : IDisposable
+    public class AUT : IDisposable, IMapFacade
     {
         private bool disposed = false;
         private readonly ILifetimeScope scope;
@@ -26,6 +27,12 @@ namespace FacadeExample
         public Map Map;
         public Log Log;
         public Browser Browser;
+
+        public PageA PageA => Map.GetNavigable<PageA>();
+
+        public PageB PageB => Map.GetNavigable<PageB>();
+
+        public PageC PageC => Map.GetNavigable<PageC>();
 
         public void Dispose() => Dispose(true);
 

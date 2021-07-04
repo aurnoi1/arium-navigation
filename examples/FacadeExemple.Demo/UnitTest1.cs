@@ -19,33 +19,33 @@ namespace FacadeExemple.Demo
             using AUT aut2 = new AUT(testContext);
             var pageA = aut.Map.Nodes.Where(x => x.GetType() == typeof(PageA)).SingleOrDefault() as PageA;
             aut.Map.PageA.PublishStatus();
-            Assert.True((bool)aut.Map.PageA.PublishStatus().Exist.Value);
-            Assert.True((bool)aut.Map.PageA.PublishStatus().Ready.Value);
+            Assert.True((bool)aut.PageA.PublishStatus().Exist.Value);
+            Assert.True((bool)aut.PageA.PublishStatus().Ready.Value);
             Assert.Single(aut.Log.Historic);
-            Assert.Same(pageA, aut.Map.PageA);
+            Assert.Same(pageA, aut.PageA);
             Assert.Same(aut.Log, aut.Browser.Log);
             Assert.False(aut.Browser.GlobalCancellationToken.IsCancellationRequested);
             Assert.Same(aut.Log, pageA.Log);
             Assert.Same(aut.Map, pageA.Map);
-            Assert.Same(aut.Map.PageB.Log, pageA.Log);
-            Assert.Same(aut.Map.PageC.Log, pageA.Log);
+            Assert.Same(aut.PageB.Log, pageA.Log);
+            Assert.Same(aut.PageC.Log, pageA.Log);
             Assert.Equal(controlTimeOut, pageA.ControlTimeout);
-            Assert.True(aut.Browser.Exists(aut.Map.PageA));
-            Assert.True(aut.Browser.WaitForReady(aut.Map.PageA));
+            Assert.True(aut.Browser.Exists(aut.PageA));
+            Assert.True(aut.Browser.WaitForReady(aut.PageA));
             aut.Browser
-                .Goto(aut.Map.PageA)
-                .Goto(aut.Map.PageB)
+                .Goto(aut.PageA)
+                .Goto(aut.PageB)
                 .Do<PageA>((lt) =>
                 {
                     Assert.NotEqual(lt, navigationCancellationSource.Token);
-                    return aut.Map.PageB.OpenPageA(lt);
+                    return aut.PageB.OpenPageA(lt);
                 }, TimeSpan.FromSeconds(30))
                 .Do((lt) =>
                 {
                     Assert.Equal(lt, navigationCancellationSource.Token);
                 })
-                .Goto(aut.Map.PageC)
-                .Goto(aut.Map.PageA);
+                .Goto(aut.PageC)
+                .Goto(aut.PageA);
         }
     }
 }
