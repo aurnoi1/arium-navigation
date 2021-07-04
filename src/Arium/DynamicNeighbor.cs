@@ -4,6 +4,11 @@ using System.Linq;
 
 namespace Arium
 {
+    /// <summary>
+    /// Defines a DynamicNeighbor.
+    /// It uses to resolve navigation multiple alternatives of
+    /// Navigables can result from one action (ex: a click on a "Back" button).
+    /// </summary>
     public class DynamicNeighbor
     {
         /// <summary>

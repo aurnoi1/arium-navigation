@@ -16,9 +16,12 @@ The `AUT` is a representation of the application under test. This is the entry p
 The word `Page` references to a representation of a page of your AUT. 
 It could implements a [Page Model Object Pattern](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/). In this example, the terms `Page` and `Navigable` are interchangeable, `Navigable` being the generic term of the network's objects. 
 
+See Arium.Navigable for abstract implemention of a base class.
+
 ## Map
 
 The word `Map` references to an object containing the declaration of your AUT's pages.
+See Arium.Mapper for abstract implemention.
 
 ## Observers
 

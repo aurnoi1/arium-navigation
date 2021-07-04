@@ -15,5 +15,12 @@ namespace Arium.Interfaces
         IGraph Graph { get; }
 
         HashSet<DynamicNeighbor> DynamicNeighbors { get; }
+
+        /// <summary>
+        /// Get a Navigable from the node.
+        /// </summary>
+        /// <typeparam name="T">The returned type.</typeparam>
+        /// <returns>A Navigable.</returns>
+        T GetNavigable<T>() where T : INavigable;
     }
 }
