@@ -6,7 +6,14 @@ namespace Arium
 {
     public class DynamicNeighbor
     {
+        /// <summary>
+        /// The origin.
+        /// </summary>
         public INavigable Origin { get; }
+
+        /// <summary>
+        /// The alternatives. 
+        /// </summary>
         public HashSet<INavigable> Alternatives { get; }
 
         /// <summary>

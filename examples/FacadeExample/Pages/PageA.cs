@@ -7,7 +7,7 @@ namespace FacadeExample.Pages
 {
     public class PageA : BasePage
     {
-        public PageA(IMapFacade map, ILog log, TimeSpan controlTimeout) : base(map, log, controlTimeout)
+        public PageA(IMapFacade map, ILog log, TestContext testContext) : base(map, log, testContext)
         {
         }
 

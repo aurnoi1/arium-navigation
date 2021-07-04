@@ -12,11 +12,11 @@ namespace FacadeExample.Pages
         public readonly ILog Log;
         public readonly IMapFacade Map;
 
-        public BasePage(IMapFacade map, ILog log, TimeSpan controlTimeout)
+        public BasePage(IMapFacade map, ILog log, TestContext testContext)
         {
             Map = map;
             Log = log;
-            ControlTimeout = controlTimeout;
+            ControlTimeout = testContext.FindControlTimeout;
             RegisterObserver(log);
         }
     }
