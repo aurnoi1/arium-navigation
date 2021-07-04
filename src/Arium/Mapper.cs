@@ -1,4 +1,5 @@
-﻿using Arium.Interfaces;
+﻿using Arium.Exceptions;
+using Arium.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,9 +56,16 @@ namespace Arium
         /// <returns>A Navigable.</returns>
         public virtual T GetNavigable<T>() where T : INavigable
         {
-            Type t = typeof(T);
-            var navigable = (T)Nodes.Where(n => n.GetType() == t).SingleOrDefault();
-            return navigable;
+            Type type = typeof(T);
+            var match = Nodes.Where(n => n.GetType() == type).SingleOrDefault();
+            if (match != null)
+            {
+                return (T)match;
+            }
+            else
+            {
+                throw new UnregistredNodeException(type);
+            }
         }
 
         private HashSet<DynamicNeighbor> GetDynamicNeighbors()

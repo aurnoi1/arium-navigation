@@ -63,7 +63,7 @@ namespace AUT.Facade
         /// </summary>
         /// <typeparam name="T">The returned instance type.</typeparam>
         /// <returns>The instance of the requested INavigable.</returns>
-        private T GetNavigable<T>() where T : INavigable
+        public T GetNavigable<T>() where T : INavigable
         {
             Type type = typeof(T);
             var match = Nodes.Where(n => n.GetType() == type).SingleOrDefault();
