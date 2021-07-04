@@ -26,6 +26,8 @@ namespace FacadeExemple.Demo
             Assert.False(aut.Browser.GlobalCancellationToken.IsCancellationRequested);
             Assert.Same(aut.Log, pageA.Log);
             Assert.Same(aut.Map, pageA.Map);
+            Assert.Same(aut.Map.PageB.Log, pageA.Log);
+            Assert.Same(aut.Map.PageC.Log, pageA.Log);
             Assert.Equal(controlTimeOut, pageA.ControlTimeout);
             Assert.True(aut.Browser.Exists(aut.Map.PageA));
             Assert.True(aut.Browser.WaitForReady(aut.Map.PageA));

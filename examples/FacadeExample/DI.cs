@@ -32,8 +32,9 @@ namespace FacadeExample
                 .As<IMap>()
                 .InstancePerLifetimeScope();
 
-            builder.Register(c => new HashSet<INavigable>(c.Resolve<IEnumerable<INavigable>>(findControlTimeoutPara)))
-                .As<HashSet<INavigable>>();
+            builder.Register(c => new HashSet<INavigable>(
+                c.Resolve<IEnumerable<INavigable>>(findControlTimeoutPara))
+            ).As<HashSet<INavigable>>();
 
             builder.RegisterType<Graph>().As<IGraph>().InstancePerLifetimeScope();
             builder.RegisterType<Navigator>().As<INavigator>().InstancePerLifetimeScope();

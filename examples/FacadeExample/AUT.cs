@@ -2,6 +2,7 @@
 using Arium.Interfaces;
 using Autofac;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace FacadeExample
@@ -16,9 +17,8 @@ namespace FacadeExample
             var findControlTimeoutPara = new TypedParameter(typeof(TimeSpan), findControlTimeout);
             DI.Build(findControlTimeoutPara);
             scope = DI.Container.BeginLifetimeScope();
-            var scopePara = new TypedParameter(typeof(ILifetimeScope), scope);
             Log = scope.Resolve<ILog>() as Log;
-            Map = scope.Resolve<IMapFacade>(scopePara) as Map;
+            Map = scope.Resolve<IMapFacade>() as Map;
             Browser = scope.Resolve<IBrowser>(
                 new TypedParameter(typeof(CancellationToken), navigationCancellation)
                 ) as Browser;

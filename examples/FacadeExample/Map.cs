@@ -10,21 +10,24 @@ namespace FacadeExample
 {
     public class Map : IMapFacade
     {
-        private readonly ILifetimeScope scope;
         private HashSet<DynamicNeighbor> dynamicNeighbors;
+        private readonly Lazy<HashSet<INavigable>> _nodes;
+        private readonly Lazy<IGraph> _graph;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Map"/> class.
         /// </summary>
-        /// <param name="scope">The Container's scope used as DI resolver.</param>
-        /// This parameter is needed for the pages resolution.</param>
-        public Map(ILifetimeScope scope)
+        /// <param name="nodes">The INaviable nodes.</param>
+        /// <param name="graph">The Graph.</param>
+        /// <remarks>The parameters are Lazy to prevent recursive initialization exception.</remarks>
+        public Map(Lazy<HashSet<INavigable>> nodes, Lazy<IGraph> graph)
         {
-            this.scope = scope;
+            _nodes = nodes;
+            _graph = graph;
         }
 
-        public HashSet<INavigable> Nodes => scope.Resolve<HashSet<INavigable>>();
-        public IGraph Graph => scope.Resolve<IGraph>();
+        public HashSet<INavigable> Nodes => _nodes.Value;
+        public IGraph Graph => _graph.Value;
 
         public HashSet<DynamicNeighbor> DynamicNeighbors
         {
